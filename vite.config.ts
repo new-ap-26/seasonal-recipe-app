@@ -16,11 +16,12 @@ export default defineConfig(({ mode }) => {
         manifest: {
           name: '旬ごはん',
           short_name: '旬ごはん',
-          description: '旬・栄養・薬膳と、自分好みに育てる2人分レシピアプリ',
+          description: '旬・栄養・薬膳と、自分好みに育てる季節のレシピアプリ',
           theme_color: '#6f7d4e',
           background_color: '#f7f5ef',
           display: 'standalone',
-          start_url: '.',
+          start_url: base,
+          scope: base,
           icons: [
             { src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }
           ]
