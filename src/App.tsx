@@ -7,7 +7,7 @@ import './styles.css'
 
 type Tab = 'home' | 'recipes' | 'season' | 'medicinal' | 'mine'
 
-const categories: ('すべて' | DishCategory | '作り置き')[] = ['すべて','主菜','副菜','作り置き','汁物','ご飯','麺']
+const categories: ('すべて' | DishCategory | '作り置き' | '定番料理')[] = ['すべて','主菜','副菜','作り置き','汁物','ご飯','麺','定番料理']
 const seasons: ('すべて' | Season)[] = ['すべて','春','夏','秋','冬','通年']
 
 function currentSeason(): Season {
@@ -47,7 +47,7 @@ export default function App() {
   const visibleRecipes = useMemo(() => recipes.map(r => applyRevision(r, state.revisions[r.id])).filter(r => {
     const q = query.trim().toLowerCase()
     const text = `${r.name} ${r.description} ${r.ingredients.map(i => i.name).join(' ')}`.toLowerCase()
-    const categoryOk = category === 'すべて' || (category === '作り置き' ? r.tags.includes('作り置き') : r.category === category)
+    const categoryOk = category === 'すべて' || (category === '作り置き' ? r.tags.includes('作り置き') : category === '定番料理' ? r.tags.includes('定番') : r.category === category)
     const seasonOk = season === 'すべて' || r.season.includes(season as Season)
     return (!q || text.includes(q)) && categoryOk && seasonOk
   }), [query, category, season, state.revisions])
@@ -116,7 +116,7 @@ function Home({state,openRecipe,setTab}:{state:UserState,openRecipe:(id:string)=
   const recentIds = [...new Set(state.logs.map(l => l.recipeId))].filter(id => recipes.some(r => r.id === id)).slice(0,3)
   return <div className="page home">
     <section className="hero-card">
-      <div className="food-art">{season}</div><div className="hero-copy"><span className="pill">今季のおすすめ</span><h2>{hero.name}</h2><p>{hero.description}</p><div className="meta">❧ {hero.season.join('・')}　⌛ {hero.cookingTime}分　👥 {servingText(hero)}</div>{hero.cookingTimeNote&&<p className="time-note">※{hero.cookingTimeNote}</p>}<button className="primary" onClick={() => openRecipe(hero.id)}>レシピを見る</button></div>
+      <div className="food-art">{season}</div><div className="hero-copy"><span className="pill">今季のおすすめ</span><h2>{hero.name}</h2><p>{hero.description}</p><div className="meta">❧ {hero.season.join('・')}{hero.cookingTime!==undefined&&`　⌛ ${hero.cookingTime}分`}　👥 {servingText(hero)}</div>{hero.cookingTimeNote&&<p className="time-note">※{hero.cookingTimeNote}</p>}<button className="primary" onClick={() => openRecipe(hero.id)}>レシピを見る</button></div>
     </section>
     <section><h3>今、何を食べたい？</h3><div className="quick-grid"><button onClick={() => setTab('season')}>❧<b>旬から</b></button><button onClick={() => setTab('recipes')}>🥕<b>食材から</b></button><button onClick={() => setTab('medicinal')}>☯<b>薬膳から</b></button><button onClick={() => setTab('recipes')}>⌛<b>時間から</b></button></div></section>
     <section><div className="section-head"><h3>{season}の旬</h3><button onClick={() => setTab('season')}>もっと見る</button></div><div className="chips">{seasonFoods(season).map(x=><span key={x}>{x}</span>)}</div></section>
@@ -125,7 +125,7 @@ function Home({state,openRecipe,setTab}:{state:UserState,openRecipe:(id:string)=
 }
 
 function RecipeList({items,state,query,setQuery,category,setCategory,season,setSeason,openRecipe}:{items:Recipe[],state:UserState,query:string,setQuery:(s:string)=>void,category:(typeof categories)[number],setCategory:(x:(typeof categories)[number])=>void,season:(typeof seasons)[number],setSeason:(x:(typeof seasons)[number])=>void,openRecipe:(id:string)=>void}) {
-  return <div className="page"><h2>レシピ集</h2><input className="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="料理名・食材を検索"/><div className="filter-row">{categories.map(c=><button key={c} className={category===c?'selected':''} onClick={()=>setCategory(c)}>{c}</button>)}</div><div className="filter-row">{seasons.map(s=><button key={s} className={season===s?'selected':''} onClick={()=>setSeason(s)}>{s}</button>)}</div><div className="recipe-grid">{items.map(r=><button key={r.id} className="recipe-card" onClick={()=>openRecipe(r.id)}><div className="recipe-image">{r.season[0]}</div><div><div className="card-title"><b>{r.name}</b>{state.favorites.includes(r.id)&&<span>♥</span>}</div><p>{r.description}</p><div className="meta">⌛ {r.cookingTime}分　{r.tags.slice(0,2).join('・')}</div>{r.verification?.cookingTestStatus==='untested'&&<span className="status-badge">試作前</span>}</div></button>)}</div>{items.length===0&&<p className="empty">条件に合うレシピがありません。</p>}</div>
+  return <div className="page"><h2>レシピ集</h2><input className="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="料理名・食材を検索"/><div className="filter-row">{categories.map(c=><button key={c} className={category===c?'selected':''} onClick={()=>setCategory(c)}>{c}</button>)}</div><div className="filter-row">{seasons.map(s=><button key={s} className={season===s?'selected':''} onClick={()=>setSeason(s)}>{s}</button>)}</div><div className="recipe-grid">{items.map(r=><button key={r.id} className="recipe-card" onClick={()=>openRecipe(r.id)}><div className="recipe-image">{r.season[0]}</div><div><div className="card-title"><b>{r.name}</b>{state.favorites.includes(r.id)&&<span>♥</span>}</div><p>{r.description}</p><div className="meta">{r.cookingTime!==undefined&&`⌛ ${r.cookingTime}分　`}{r.tags.slice(0,2).join('・')}</div>{r.verification?.cookingTestStatus==='untested'&&<span className="status-badge">試作前</span>}</div></button>)}</div>{items.length===0&&<p className="empty">条件に合うレシピがありません。</p>}</div>
 }
 
 function RecipeDetail({recipe,state,onBack,onFavorite,onStaple,onLog,onRevise,onReset}:{recipe:Recipe,state:UserState,onBack:()=>void,onFavorite:(id:string)=>void,onStaple:(id:string)=>void,onLog:(r:Recipe,n:number,t:string[],m:string)=>void,onRevise:(r:Recipe,c:Record<string,unknown>)=>void,onReset:(id:string)=>void}) {
@@ -144,7 +144,7 @@ function RecipeDetail({recipe,state,onBack,onFavorite,onStaple,onLog,onRevise,on
     onRevise(recipe,{ingredients})
     setEditing(false)
   }
-  return <div className="page detail"><button className="back" onClick={onBack}>← レシピ一覧</button><div className="detail-image">{recipe.season[0]}</div><div className="title-row"><div><h2>{recipe.name}</h2><div className="meta">👥 {servingText(recipe)}　⌛ {recipe.cookingTime}分　{recipe.season.map(s=>`・${s}`)}</div>{recipe.cookingTimeNote&&<p className="time-note">※{recipe.cookingTimeNote}</p>}</div><button className="heart" onClick={()=>onFavorite(recipe.id)}>{state.favorites.includes(recipe.id)?'♥':'♡'}</button></div><div className="chips">{[recipe.category,...recipe.tags].map(x=><span key={x}>{x}</span>)}{recipe.verification?.cookingTestStatus==='untested'&&<span>試作前</span>}</div>
+  return <div className="page detail"><button className="back" onClick={onBack}>← レシピ一覧</button><div className="detail-image">{recipe.season[0]}</div><div className="title-row"><div><h2>{recipe.name}</h2><div className="meta">👥 {servingText(recipe)}　{recipe.cookingTime!==undefined&&`⌛ ${recipe.cookingTime}分　`}{recipe.season.map(s=>`・${s}`)}</div>{recipe.cookingTimeNote&&<p className="time-note">※{recipe.cookingTimeNote}</p>}</div><button className="heart" onClick={()=>onFavorite(recipe.id)}>{state.favorites.includes(recipe.id)?'♥':'♡'}</button></div><div className="chips">{[recipe.category,...recipe.tags].map(x=><span key={x}>{x}</span>)}{recipe.verification?.cookingTestStatus==='untested'&&<span>試作前</span>}</div>
   <section><h3>材料</h3><GroupedIngredients items={recipe.ingredients}/></section>
   <section><h3>作り方</h3><ol className="steps">{recipe.steps.map((s,i)=><li key={i}><span>{i+1}</span><div>{s.text}{s.cue&&<p className="cue">✓ {s.cue}</p>}</div></li>)}</ol></section>
   {recipe.cookingTips?.length&&<section className="info-box"><h3>失敗しにくくするコツ</h3><ul className="tips-list">{recipe.cookingTips.map(t=><li key={t}>{t}</li>)}</ul></section>}
@@ -168,7 +168,7 @@ function IngredientTable({items}:{items:Recipe['ingredients']}) {
 
 function SeasonPage({openRecipe}:{openRecipe:(id:string)=>void}) {
   const season = currentSeason()
-  return <div className="page"><h2>旬を食べる</h2><p className="lead">季節ごとの食材と、その季節におすすめの料理を見つけます。</p><div className="season-cards"><SeasonCard title="春" foods="たけのこ・あさり・春キャベツ・菜の花"/><SeasonCard title="夏" foods="トマト・きゅうり・アジ・なす"/><SeasonCard title="秋" foods="れんこん・きのこ・鮭・さつまいも"/><SeasonCard title="冬" foods="大根・白菜・長ねぎ・ほうれん草"/></div><h3>{season}のおすすめ</h3>{recipes.filter(r=>r.season.includes(season)).map(r=><button className="mini-card" key={r.id} onClick={()=>openRecipe(r.id)}><b>{r.name}</b><span>{r.category}・{r.cookingTime}分</span></button>)}</div>
+  return <div className="page"><h2>旬を食べる</h2><p className="lead">季節ごとの食材と、その季節におすすめの料理を見つけます。</p><div className="season-cards"><SeasonCard title="春" foods="たけのこ・あさり・春キャベツ・菜の花"/><SeasonCard title="夏" foods="トマト・きゅうり・アジ・なす"/><SeasonCard title="秋" foods="れんこん・きのこ・鮭・さつまいも"/><SeasonCard title="冬" foods="大根・白菜・長ねぎ・ほうれん草"/></div><h3>{season}のおすすめ</h3>{recipes.filter(r=>r.season.includes(season)).map(r=><button className="mini-card" key={r.id} onClick={()=>openRecipe(r.id)}><b>{r.name}</b><span>{r.category}{r.cookingTime!==undefined&&`・${r.cookingTime}分`}</span></button>)}</div>
 }
 
 function SeasonCard({title,foods}:{title:string,foods:string}) { return <div className="season-card"><b>{title}</b><p>{foods}</p></div> }

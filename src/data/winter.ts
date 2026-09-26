@@ -1,12 +1,25 @@
 import type { Recipe } from '../types'
-import { cookedStorage, pendingNutrition, pendingYakuzen, provisional, reviewed, soupStorage } from './shared'
+import { cookedStorage, pendingNutrition, pendingYakuzen, provisional, reviewed, soupStorage, untested } from './shared'
 
 export const winterRecipes: Recipe[] = [
   {
-    id: 'buri-daikon', name: 'ぶり大根', description: 'ぶりのうまみを大根にしみ込ませる冬の定番煮物。', servings: 2, cookingTime: 30, category: '主菜', season: ['冬'], tags: ['旬食材'],
-    ingredients: [{ name: 'ぶり（切り身）', amount: '2切れ（180〜200g程度）', type: 'food', group: '主材料', amountType: 'fixed' }, { name: '大根', amount: '300g', type: 'food', group: '主材料', amountType: 'fixed' }, { name: 'しょうが', amount: '1片', type: 'food', group: '香味', amountType: 'fixed' }, { name: '水', amount: '250ml', type: 'liquid', group: '煮汁', amountType: 'fixed' }, { name: '酒', amount: '大さじ3', type: 'seasoning', group: '煮汁', amountType: 'fixed' }, { name: 'しょうゆ', amount: '大さじ2', type: 'seasoning', group: '煮汁', amountType: 'fixed' }, { name: 'みりん', amount: '大さじ2', type: 'seasoning', group: '煮汁', amountType: 'fixed' }, { name: '砂糖', amount: '大さじ1/2', type: 'seasoning', group: '煮汁', amountType: 'fixed' }],
-    steps: [{ text: '大根は1.5cm幅の半月切りにし、耐熱容器で600W 6〜7分加熱する。' }, { text: 'ぶりに熱湯を回しかけ、水気を切る。' }, { text: '鍋に煮汁としょうがを入れて煮立て、ぶりと大根を加える。' }, { text: '落としぶたをして弱めの中火で10〜15分煮る。' }, { text: '大根がやわらかくなったら火を止め、数分置いて味をなじませる。' }],
-    cookingTips: ['ぶりは熱湯をかけてから煮る。', '煮汁を完全に煮切らない。'], seasonInfo: 'ぶりと大根を冬に楽しむ定番料理です。', nutritionNote: 'ぶりはたんぱく質や脂質、大根はカリウムなどを含みます。', medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: reviewed, sourceStatus: 'reviewed'
+    id: 'buri-daikon', name: 'ぶり大根', description: 'あらの脂やうまみが大根にうつり、極上のおいしさ！ぶりの切り身に替えても、おいしく作れます。', servings: 3, servingLabel: '2〜3人分', category: '主菜', season: ['冬'], tags: ['旬食材'],
+    ingredients: [
+      { name: 'ぶりのあら', amount: '300g', type: 'food', amountType: 'fixed' },
+      { name: '大根（直径7〜8cmのもの）', amount: '1/2本（約500g）', type: 'food', amountType: 'fixed' },
+      { name: 'しょうがの薄切り', amount: '2かけ分', type: 'food', amountType: 'fixed' },
+      { name: '水', amount: '1と1/2カップ', type: 'liquid', group: '甘辛つゆ', amountType: 'fixed' },
+      { name: 'しょうゆ', amount: '大さじ3', type: 'seasoning', group: '甘辛つゆ', amountType: 'fixed' },
+      { name: 'みりん', amount: '大さじ2', type: 'seasoning', group: '甘辛つゆ', amountType: 'fixed' },
+      { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: '甘辛つゆ', amountType: 'fixed' }
+    ],
+    steps: [
+      { text: 'たっぷりの熱湯を沸かし、弱火にしてぶりのあらを入れる。表面が白っぽくなったら冷水にとる。ぬめりや血をこすり取り、洗い流してざるに上げる（霜ふり）。落としぶたを用意する。', cue: 'ぶりの表面が白っぽくなったら冷水にとる。' },
+      { text: '大根は幅2cmの輪切りにし、厚めに皮をむいて半分に切る。直径約25cmの耐熱皿に広げ、水大さじ1をふる。ふんわりとラップをかけ、電子レンジで10分ほど加熱する。冷水にとってさまし、水けを拭く。', cue: '電子レンジで10分ほど。' },
+      { text: 'フライパンに甘辛つゆの材料を入れ、強火にかける。煮立ったら大根、ぶりのあら、しょうがを入れる。落としぶたをして中火にし、12〜15分煮る。途中で1〜2回上下を返す。煮る時間は大根の水分にもよるので調節する。', cue: '煮立ったら具材を入れ、中火で12〜15分。途中で1〜2回上下を返す。' },
+      { text: '落としぶたを取り、強めの中火にする。たえずフライパンを揺すりながら、底に煮汁が少量残るくらいまで1〜2分煮つめる。火を止め、器に盛る。', cue: '底に煮汁が少量残る程度まで、1〜2分煮つめる。' }
+    ],
+    cookingTips: ['ぶりのあらが手に入らない場合は切り身でもよい。切り身はあらより堅くなりやすいため、手順3で大根、しょうがを先に5分ほど煮てから切り身を加え、さらに10分ほど煮る。'], seasonInfo: 'ぶりと大根を冬に楽しむ定番料理です。', nutritionNote: '1/3量あたり 232kcal、塩分2.7g', medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: untested, sourceStatus: 'draft'
   },
   {
     id: 'chicken-hakusai-umani', name: '鶏と白菜のうま煮', description: '鶏肉と白菜をとろりと煮合わせる冬のあったか主菜。', servings: 2, cookingTime: 25, category: '主菜', season: ['冬'], tags: ['旬食材'],

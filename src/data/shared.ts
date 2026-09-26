@@ -18,6 +18,16 @@ export const provisional: RecipeVerification = {
   cookingTestStatus: 'untested'
 }
 
+// 元資料から入力済み・未確認・調理テスト前（「試作前」表示）
+export const untested: RecipeVerification = {
+  taste: 'pending',
+  season: 'pending',
+  nutrition: 'pending',
+  yakuzen: 'pending',
+  storage: 'pending',
+  cookingTestStatus: 'untested'
+}
+
 export const pendingNutrition = '栄養情報は日本食品標準成分表との照合後に追記予定です。'
 export const pendingYakuzen = '薬膳情報は専門資料の確認後に追記予定です。'
 

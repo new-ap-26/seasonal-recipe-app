@@ -1,6 +1,6 @@
 export type DishCategory = '主菜' | '副菜' | '汁物' | 'ご飯' | '麺' | '丼・ワンプレート' | 'デザート' | 'その他'
 export type Season = '春' | '夏' | '秋' | '冬' | '通年'
-export type RecipeTag = '作り置き' | '時短' | '冷凍可' | '冷蔵保存' | 'おつまみ' | '朝食向き' | '節約' | '旬食材'
+export type RecipeTag = '作り置き' | '時短' | '冷凍可' | '冷蔵保存' | 'おつまみ' | '朝食向き' | '節約' | '旬食材' | '定番'
 export type VerificationStatus = 'verified' | 'reviewed' | 'pending'
 export type CookingTestStatus = 'untested' | 'tested' | 'adjusted' | 'approved'
 export type AmountType = 'fixed' | 'guideline' | 'optional'
@@ -33,7 +33,7 @@ export type Recipe = {
   description: string
   servings: number
   servingLabel?: string
-  cookingTime: number
+  cookingTime?: number
   cookingTimeNote?: string
   category: DishCategory
   season: Season[]
