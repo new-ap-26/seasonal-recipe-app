@@ -1,9 +1,9 @@
 import type { Recipe } from '../types'
-import { untested } from './shared'
+import { cookedStorage, untested } from './shared'
 
 export const standardRecipes: Recipe[] = [
   {
-    id: 'chikuzenni', name: '筑前煮', description: '鶏もものうまみとつゆをしっかり吸った根菜が、しみじみおいしい。', servings: 4, servingLabel: '3〜4人分', category: '主菜', season: ['通年'], tags: ['定番'],
+    id: 'chikuzenni', name: '筑前煮', description: '鶏肉と根菜を炒めてから、甘辛いつゆで煮含める定番の煮物。', servings: 4, servingLabel: '3〜4人分', cookingTimeNote: '加熱時間の目安：約25〜30分（下ごしらえは別）', category: '主菜', season: ['通年'], tags: ['定番'],
     ingredients: [
       { name: '鶏もも肉（小）', amount: '1枚（約200g）', type: 'food', amountType: 'fixed' }, { name: 'ごぼう', amount: '1本（約150g）', type: 'food', amountType: 'fixed' },
       { name: 'れんこん', amount: '1/2節（約100g）', type: 'food', amountType: 'fixed' }, { name: 'にんじん（小）', amount: '1本（約100g）', type: 'food', amountType: 'fixed' },
@@ -13,15 +13,16 @@ export const standardRecipes: Recipe[] = [
       { name: 'みりん', amount: '大さじ2', type: 'seasoning', group: '甘辛つゆ', amountType: 'fixed' }, { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: '甘辛つゆ', amountType: 'fixed' }
     ],
     steps: [
-      { text: 'ごぼうは皮を包丁の背でこそげ、乱切りにする。れんこんは皮をむき、一口大の乱切りにする。ごぼうとれんこんは水にさらし、水けをきる。生しいたけは石づきを切り、4等分にする。こんにゃくはスプーンで一口大にちぎる。鶏肉は余分な脂肪を取り、一口大に切る。水、しょうゆ、みりん、砂糖を混ぜて甘辛つゆを作る。' },
-      { text: 'フライパンにサラダ油大さじ1/2を中火で熱し、鶏肉を入れて炒める。肉の色が変わったら、残りの具材をすべて加え、全体に油が回るまでさらに2分ほど炒め合わせる。', cue: '肉の色が変わったら残りの具材を加え、全体に油が回るまで約2分。' },
-      { text: '甘辛つゆを加える。煮立ったらアクを取る。落としぶたをして弱めの中火にし、20〜25分煮る。途中で1〜2回上下を返す。煮汁が具の高さの1/3くらいまで減るのを煮終わりの目安とする。', cue: '煮汁が具の高さの1/3程度まで減ったら煮終わり。' },
-      { text: '落としぶたを取り、強めの中火にする。たえず大きく混ぜながら、底に煮汁が少量残るくらいまで1〜2分煮つめる。火を止め、器に盛る。', cue: '底に煮汁が少量残る程度まで、1〜2分煮つめる。' }
+      { text: 'ごぼうは包丁の背で皮をこそげて乱切りに、れんこんは皮をむいて一口大の乱切りにし、どちらも水にさらして水けをきる。しいたけは石づきを落として4等分に、こんにゃくはスプーンで一口大にちぎる。鶏肉は余分な脂を除いて一口大に切る。甘辛つゆの材料を混ぜておく。' },
+      { text: 'フライパンにサラダ油大さじ1/2を中火で熱し、鶏肉を炒める。色が変わったら残りの具材をすべて加え、全体に油がなじむまで約2分炒める。', cue: '鶏肉の色が変わってから、ほかの具材を加える。' },
+      { text: '甘辛つゆを加え、煮立ったらアクを取る。落としぶたをして弱めの中火で20〜25分煮る。途中で1〜2回、上下を返す。', cue: '煮汁が具の高さの1/3ほどまで減ったら煮終わり。' },
+      { text: '落としぶたを外して強めの中火にし、大きく混ぜながら1〜2分煮つめる。火を止めて器に盛る。', cue: '鍋底に煮汁が少し残るくらいで火を止める。' }
     ],
-    nutritionNote: '1/4量あたり 207kcal、塩分2.1g', verification: untested, sourceStatus: 'draft'
+    nutritionNote: '参考資料の記載：1/4量あたり207kcal、塩分2.1g。材料や製品により変動します。', storage: cookedStorage,
+    verification: untested, sourceStatus: 'draft'
   },
   {
-    id: 'nikujaga', name: '肉じゃが', description: 'ほっくりと煮えたじゃがいもは、甘辛味がしみしみ。牛肉は先に炒めていったん取り出すと、パサついたり、ちぎれたりする心配なし！', servings: 3, servingLabel: '2〜3人分', category: '主菜', season: ['通年'], tags: ['定番'],
+    id: 'nikujaga', name: '肉じゃが', description: '牛肉をいったん取り出してから煮るので、肉が堅くなりにくい甘辛の煮物。', servings: 3, servingLabel: '2〜3人分', cookingTimeNote: '加熱時間の目安：約15〜20分（下ごしらえは別）', category: '主菜', season: ['通年'], tags: ['定番'],
     ingredients: [
       { name: 'じゃがいも', amount: '3個（約450g）', type: 'food', amountType: 'fixed' },
       { name: '牛こま切れ肉', amount: '150g', type: 'food', amountType: 'fixed' },
@@ -31,16 +32,17 @@ export const standardRecipes: Recipe[] = [
       { name: 'しょうゆ', amount: '大さじ3', type: 'seasoning', group: '甘辛つゆ', amountType: 'fixed' },
       { name: 'みりん', amount: '大さじ2', type: 'seasoning', group: '甘辛つゆ', amountType: 'fixed' },
       { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: '甘辛つゆ', amountType: 'fixed' },
-      { name: 'サラダ油', amount: '大さじ1/2', type: 'seasoning', amountType: 'fixed' }
+      { name: 'サラダ油', amount: '大さじ1（大さじ1/2ずつ使用）', type: 'seasoning', amountType: 'fixed' }
     ],
     steps: [
-      { text: 'じゃがいもは皮をむいて4つ割りにし、5分ほど水にさらして水けをきる。玉ねぎは幅1.5cmのくし形切りにする。にんじんは皮をむき、小さめの一口大の乱切りにする。甘辛つゆの材料を混ぜる。落としぶたを用意する。' },
-      { text: 'フライパンにサラダ油大さじ1/2を中火で熱し、牛肉を炒める。肉の色が変わるまで1分ほど炒め、取り出す。いったん取り出し、煮る直前に戻すことで堅くなりにくい。', cue: '肉の色が変わるまで1分ほど。' },
-      { text: '手順2のフライパンをさっと拭き、サラダ油大さじ1/2を入れて中火で熱する。じゃがいも、にんじん、玉ねぎを入れ、いもの角が透き通るまで2分ほど炒める。牛肉を戻して甘辛つゆを加え、煮立ったらアクを取る。', cue: 'いもの角が透き通るまで2分ほど。煮立ったらアクを取る。' },
-      { text: '落としぶたをし、煮くずれないよう様子をみながら、弱めの中火で10〜12分煮る。つゆがふつふつと泡立つくらいの火加減をキープする。途中で1〜2回上下を返す。火の通りが均一になるようにする。', cue: 'つゆがふつふつと泡立つくらいの弱めの中火で10〜12分。途中で1〜2回上下を返す。' },
-      { text: 'じゃがいもに竹串を刺してみて、すーっと通ったらOK。落としぶたを取り、強めの中火にする。そっと上下を返しながら2〜3分煮つめる。煮汁が1/3量くらいになったら、火を止める。', cue: 'じゃがいもに竹串がすーっと通ったら、強めの中火で2〜3分。煮汁が1/3量くらいになったら火を止める。' }
+      { text: 'じゃがいもは皮をむいて4等分し、水に約5分さらして水けをきる。玉ねぎは幅1.5cmのくし形に、にんじんは皮をむいて小さめの乱切りにする。甘辛つゆの材料を混ぜ、落としぶたを用意する。' },
+      { text: 'フライパンにサラダ油大さじ1/2を中火で熱し、牛肉を約1分炒めて取り出す。煮る直前に戻すと、肉が堅くなりにくい。', cue: '肉の色が変わったら取り出す。' },
+      { text: 'フライパンを軽く拭き、サラダ油大さじ1/2を中火で熱する。じゃがいも、にんじん、玉ねぎを約2分炒めたら、牛肉を戻して甘辛つゆを加える。煮立ったらアクを取る。', cue: 'じゃがいもの角が透き通ってきたら、牛肉を戻す。' },
+      { text: '落としぶたをして、弱めの中火で10〜12分煮る。途中で1〜2回上下を返し、火の通りをそろえる。', cue: '煮汁が軽くふつふつと泡立つくらいの火加減を保つ。' },
+      { text: 'じゃがいもに竹串を刺して火の通りを確かめる。落としぶたを外して強めの中火にし、そっと上下を返しながら2〜3分煮つめて火を止める。', cue: '竹串がすっと通ったら煮つめに入る。煮汁が約1/3量になったら火を止める。' }
     ],
-    cookingTips: ['少なめのつゆをなじませたいときは、落としぶたが必須。つゆが落としぶたに当たって落ち、全体にいきわたります。'], nutritionNote: '1/3量あたり 339kcal、塩分2.7g', verification: untested, sourceStatus: 'draft'
+    cookingTips: ['落としぶたをすると、少ない煮汁でも全体に味が回ります。'], nutritionNote: '参考資料の記載：1/3量あたり339kcal、塩分2.7g。材料や製品により変動します。', storage: cookedStorage,
+    verification: untested, sourceStatus: 'draft'
   },
   {
     id: 'saba-misoni', name: 'さばのみそ煮', description: 'さばを皮目から香ばしく焼き、濃厚な甘めのみそだれで短時間煮る一品。みそを2回に分けて加え、香りとうまみを生かします。', servings: 2, cookingTime: 15, cookingTimeNote: '煮る時間は約6分（さばを焼く時間・下ごしらえは別）', category: '主菜', season: ['通年'], tags: ['定番'],
@@ -94,14 +96,15 @@ export const standardRecipes: Recipe[] = [
     verification: untested, sourceStatus: 'draft'
   },
   {
-    id: 'chicken-nanban', name: 'チキン南蛮', description: 'まろやかなタルタルと、甘酸っぱいたれが絶妙なバランス。サクッと香ばしいころもにより、からめてどうぞ。', servings: 2, category: '主菜', season: ['通年'], tags: ['定番'],
+    id: 'chicken-nanban', name: 'チキン南蛮', description: '揚げた鶏胸肉を甘酢にくぐらせ、手作りのタルタルソースを添える一皿。', servings: 2, cookingTimeNote: '加熱時間の目安：約6分（油を熱する時間・下ごしらえは別）', category: '主菜', season: ['通年'], tags: ['定番'],
     ingredients: [
       { name: '鶏胸肉（皮なし・大）', amount: '1枚（約300g）', type: 'food', amountType: 'fixed' },
       { name: '塩', amount: '少々', type: 'seasoning', amountType: 'guideline' },
       { name: 'こしょう', amount: '少々', type: 'seasoning', amountType: 'guideline' },
-      { name: '小麦粉', amount: '適宜', type: 'food', amountType: 'optional' },
+      { name: '小麦粉', amount: '適量', type: 'food', amountType: 'guideline' },
       { name: '溶き卵', amount: '1個分', type: 'food', amountType: 'fixed' },
-      { name: 'サラダ油', amount: '適宜', type: 'seasoning', amountType: 'optional' },
+      { name: 'サラダ油（揚げ油）', amount: '適量（深さ2cm分）', type: 'seasoning', amountType: 'guideline' },
+      { name: 'キャベツのせん切り', amount: '適宜', type: 'food', group: '付け合わせ', amountType: 'optional' },
       { name: '堅ゆで卵', amount: '1個', type: 'food', group: 'タルタルソース', amountType: 'fixed' },
       { name: '玉ねぎ', amount: '1/8個', type: 'food', group: 'タルタルソース', amountType: 'fixed' },
       { name: 'マヨネーズ', amount: '大さじ3', type: 'seasoning', group: 'タルタルソース', amountType: 'fixed' },
@@ -113,16 +116,17 @@ export const standardRecipes: Recipe[] = [
       { name: '砂糖', amount: '大さじ1と1/2', type: 'seasoning', group: '甘酢', amountType: 'fixed' }
     ],
     steps: [
-      { text: 'バットに甘酢の材料を入れ、砂糖が溶けるまで混ぜる。玉ねぎはみじん切りにし、5分ほど水にさらしてざるに上げる。ペーパータオルで包み、しっかりと水けを絞る。', cue: '玉ねぎは5分ほど水にさらす。' },
-      { text: 'ゆで卵は白身に縦半分に切り目を入れ、黄身を取り出す。白身は粗いみじん切りにしてボールに入れ、黄身はざっとくずしながら加える。残りのタルタルソースの材料を加え、さっと混ぜる。' },
-      { text: '鶏肉をまな板に縦長に置く。縦半分のところから包丁を寝かせて入れ、端に向かって厚みを切り開く。鶏肉を回転させ、反対側も同様にする（観音開き）。塩、こしょう各少々をふり、小麦粉を全体にまぶす。', cue: '観音開きにして厚みを均一にする。' },
-      { text: 'フライパンにサラダ油を高さ2cmまで入れ、低めの中温に熱する。溶き卵を別のバットに移し、鶏肉を入れて全体にからめる。肉を油に広げ入れる。トングを使ってもよい。返しながら4分ほど揚げる。強火にし、さらに1〜2分揚げて油をきる。', cue: '低めの中温は170℃。乾いた菜箸の先を底に当てると、細かい泡がシュワシュワとまっすぐ出る程度。返しながら4分ほど揚げ、強火でさらに1〜2分。' },
-      { text: '甘酢のバットに鶏肉を入れ、上下を返して甘酢をからめる。まな板にのせ、食べやすく切り分ける。器にキャベツを盛り、鶏肉をのせて、バットに残った甘酢をかける。タルタルソースを添える。' }
+      { text: 'バットに甘酢の材料を入れ、砂糖が溶けるまで混ぜる。玉ねぎはみじん切りにして水に約5分さらし、ペーパータオルで包んで水けをしっかり絞る。' },
+      { text: 'ゆで卵は白身に縦に切り込みを入れて黄身を取り出す。白身は粗く刻んでボウルに入れ、黄身は粗くくずして加える。残りのタルタルソースの材料を加えて、軽く混ぜる。' },
+      { text: '鶏肉を縦長に置き、中央から包丁を寝かせて入れて左右に切り開き、厚みをそろえる（観音開き）。塩、こしょう各少々をふり、小麦粉を全体に薄くまぶす。', cue: '厚みが均一になるように開く。' },
+      { text: 'フライパンにサラダ油を深さ2cmほど入れ、170℃に熱する。鶏肉に溶き卵をからめて油に広げ入れ、返しながら約4分揚げる。強火にしてさらに1〜2分揚げ、油をきる。', cue: '170℃の目安：乾いた菜箸を底に当てると、細かい泡がまっすぐ立ち上る。' },
+      { text: '揚げた鶏肉を甘酢のバットに入れ、上下を返してからめる。食べやすく切ってキャベツとともに器に盛り、残った甘酢をかけてタルタルソースを添える。' }
     ],
-    cookingTips: ['鶏胸肉をまるごと揚げるときは、厚みを均一にする作業が必須。揚げる時間を最小限にできるので、しっとりと仕上がります。'], nutritionNote: '1人分 494kcal、塩分3.1g', verification: untested, sourceStatus: 'draft'
+    cookingTips: ['鶏胸肉は観音開きにして厚みをそろえると、揚げ時間が短くなり、しっとり仕上がります。'], nutritionNote: '参考資料の記載：1人分494kcal、塩分3.1g。材料や製品により変動します。', storage: cookedStorage,
+    verification: untested, sourceStatus: 'draft'
   },
   {
-    id: 'pork-shogayaki', name: '豚のしょうが焼き', description: '薄切り肉をさっと炒めて作る、手軽なタイプ。粉をふっておくことで、肉が柔らかく仕上がり、たれもよくからんでつやつやに！', servings: 2, category: '主菜', season: ['通年'], tags: ['定番'],
+    id: 'pork-shogayaki', name: '豚のしょうが焼き', description: '薄切り肉を短時間で焼き、しょうがだれをからめる手軽な一品。', servings: 2, cookingTimeNote: '加熱時間の目安：約3分（下ごしらえは別）', category: '主菜', season: ['通年'], tags: ['定番'],
     ingredients: [
       { name: '豚ロース薄切り肉', amount: '200g（8〜10枚）', type: 'food', amountType: 'fixed' },
       { name: 'しょうがのすりおろし', amount: '1かけ分', type: 'seasoning', group: 'しょうが焼きだれ', amountType: 'fixed' },
@@ -130,19 +134,20 @@ export const standardRecipes: Recipe[] = [
       { name: '酒', amount: '大さじ1', type: 'seasoning', group: 'しょうが焼きだれ', amountType: 'fixed' },
       { name: 'みりん', amount: '大さじ1', type: 'seasoning', group: 'しょうが焼きだれ', amountType: 'fixed' },
       { name: 'キャベツのせん切り', amount: '適宜', type: 'food', amountType: 'optional' },
-      { name: '片栗粉', amount: '適宜', type: 'food', amountType: 'optional' },
-      { name: 'サラダ油', amount: '適宜', type: 'seasoning', amountType: 'optional' }
+      { name: '片栗粉', amount: '小さじ1/2', type: 'food', amountType: 'fixed' },
+      { name: 'サラダ油', amount: '大さじ1/2', type: 'seasoning', amountType: 'fixed' }
     ],
     steps: [
-      { text: '豚肉をまな板にさっと広げる。片栗粉小さじ1/2を茶こしに入れ、全体に均一になるようにふる（片面だけでOK）。しょうが焼きだれの材料を混ぜる。', cue: '片栗粉は片面だけでOK。' },
-      { text: 'フライパンにサラダ油大さじ1/2を中火で熱する。粉をふった面を下にして、豚肉を並べ入れる（完全に平らに広げず、少しひだが寄っているほうが柔らかく仕上がる）。肉の色が半分変わるまで1分30秒ほど焼く。', cue: '粉をふった面を下にする。肉の色が半分変わるまで1分30秒ほど。' },
-      { text: '肉を裏返してさっと焼き、余分な脂をペーパータオルで拭き取る。しょうが焼きだれを加え、強火にする。', cue: '裏返してさっと焼き、余分な脂を拭き取る。たれを加えたら強火。' },
-      { text: 'フライパンを揺すって、肉の上下を返しながらたれを肉にからめる。肉の両面に照りが出るまで30秒ほど煮つめ、火を止める。器に盛り、キャベツを添える。', cue: '肉の両面に照りが出るまで30秒ほど。' }
+      { text: '豚肉をまな板に広げ、茶こしで片栗粉小さじ1/2を片面に均一にふる。しょうが焼きだれの材料を混ぜておく。' },
+      { text: 'フライパンにサラダ油大さじ1/2を中火で熱し、粉をふった面を下にして豚肉を並べる。平らに広げきらず、少しひだを寄せて置くとやわらかく仕上がる。約1分30秒焼く。', cue: '肉の色が半分ほど変わったら裏返す。' },
+      { text: '肉を裏返して軽く焼き、出てきた余分な脂をペーパータオルで拭く。しょうが焼きだれを加えて強火にする。' },
+      { text: 'フライパンを揺すり、肉を返しながらたれを約30秒煮からめて火を止める。器に盛り、キャベツを添える。', cue: '両面につやが出たら火を止める。' }
     ],
-    cookingTips: ['肉に粉をふってガードすることで、肉汁が逃げず、ジューシーな焼き上がりに。たれに粉が溶けて、ほどよくとろみもつきます。'], nutritionNote: '1人分 315kcal、塩分1.4g', verification: untested, sourceStatus: 'draft'
+    cookingTips: ['片栗粉を片面にふってから焼くと、たれがよくからみ、ほどよいとろみがつきます。'], nutritionNote: '参考資料の記載：1人分315kcal、塩分1.4g。材料や製品により変動します。', storage: cookedStorage,
+    verification: untested, sourceStatus: 'draft'
   },
   {
-    id: 'chicken-tsukune', name: '鶏つくね', description: 'ふんわり柔らかになる秘訣は、酒を多めに入れること。柔めでも扱いやすいので、お弁当向きでも。', servings: 3, servingLabel: '2〜3人分', category: '主菜', season: ['通年'], tags: ['定番'],
+    id: 'chicken-tsukune', name: '鶏つくね', description: '酒を多めに加えたふんわりした鶏つくねを、照り焼きだれで仕上げる。', servings: 3, servingLabel: '2〜3人分', cookingTimeNote: '加熱時間の目安：約6分（下ごしらえは別）', category: '主菜', season: ['通年'], tags: ['定番'],
     ingredients: [
       { name: '鶏ひき肉', amount: '300g', type: 'food', group: 'たね', amountType: 'fixed' },
       { name: 'ねぎのみじん切り', amount: '1/3本分', type: 'food', group: 'たね', amountType: 'fixed' },
@@ -157,41 +162,45 @@ export const standardRecipes: Recipe[] = [
       { name: '卵黄', amount: '適宜', type: 'food', amountType: 'optional' },
       { name: '青じその葉', amount: '適宜', type: 'food', amountType: 'optional' },
       { name: '白いりごま', amount: '適宜', type: 'food', amountType: 'optional' },
-      { name: 'サラダ油', amount: '適宜', type: 'seasoning', amountType: 'optional' }
+      { name: 'サラダ油', amount: '大さじ1/2', type: 'seasoning', amountType: 'fixed' }
     ],
     steps: [
-      { text: '25×15cmくらいのバットにラップを敷く。照り焼きだれの材料を混ぜる。' },
-      { text: 'ボールにたねの材料を入れ、粘りが出るまで練り混ぜる。たねを1/8量ずつ、ぬらした手にとり、両手でキャッチボールをするように打ちつけて空気を抜く。長径7cmの小判形にまとめ、ラップを敷いたバットに並べる。', cue: '粘りが出るまで練り混ぜる。1/8量ずつ、長径7cmの小判形に。' },
-      { text: 'フライパンにサラダ油大さじ1/2を中火で熱し、たねを並べ入れる。2分ほど焼いてこんがりしたら裏返し、ふたをする。弱火で1分30秒ほど蒸し焼きにし、余分な脂を拭き取る。', cue: '中火で2分ほど、こんがりしたら裏返す。弱火で1分30秒ほど蒸し焼きにし、余分な脂を拭き取る。' },
-      { text: 'たれを加えて強火にし、返しながら2分ほど煮つめる。たれがしっかりからんだら、火を止める。器に青じそを敷き、つくねをのせる。フライパンに残ったたれをかけ、白ごまをふって、卵黄を添える。', cue: 'たれを加えたら強火で、返しながら2分ほど。たれがしっかりからんだら火を止める。' }
+      { text: 'バット（約25×15cm）にラップを敷く。照り焼きだれの材料を混ぜておく。' },
+      { text: 'ボウルにたねの材料を入れ、粘りが出るまで練る。8等分し、水でぬらした手で左右に軽く打ちつけて空気を抜き、長さ約7cmの小判形に整えてバットに並べる。', cue: '粘りが出るまでしっかり練る。' },
+      { text: 'フライパンにサラダ油大さじ1/2を中火で熱し、たねを並べて約2分焼く。裏返してふたをし、弱火で約1分30秒蒸し焼きにしたら、余分な脂を拭く。', cue: '焼き色がついたら裏返す。' },
+      { text: '照り焼きだれを加えて強火にし、返しながら約2分煮つめて火を止める。器に青じそを敷いてつくねを盛り、残ったたれをかけて白ごまをふり、卵黄を添える。', cue: 'たれが全体にからんだら火を止める。' }
     ],
-    nutritionNote: '1/3量あたり 314kcal、塩分2.0g', verification: untested, sourceStatus: 'draft'
+    nutritionNote: '参考資料の記載：1/3量あたり314kcal、塩分2.0g。材料や製品により変動します。', storage: cookedStorage,
+    verification: untested, sourceStatus: 'draft'
   },
   {
-    id: 'sanshoku-don', name: '三色丼', description: '甘じょっぱい「照り焼きだれ」は、鶏そぼろの味つけにも！少し多めにできるので、お弁当やおにぎりの具に。', servings: 2, category: '丼・ワンプレート', season: ['通年'], tags: ['定番'],
+    id: 'sanshoku-don', name: '三色丼', description: '鶏そぼろ、炒り卵、きぬさやをご飯にのせた、彩りのよい丼。', servings: 2, cookingTimeNote: '加熱時間の目安：約7分（ご飯を炊く時間・下ごしらえは別）', category: '丼・ワンプレート', season: ['通年'], tags: ['定番'],
     ingredients: [
       { name: '鶏ひき肉', amount: '200g', type: 'food', group: '鶏そぼろ', amountType: 'fixed' },
       { name: 'しょうゆ', amount: '大さじ2', type: 'seasoning', group: '照り焼きだれ', amountType: 'fixed' },
       { name: '酒', amount: '大さじ2', type: 'seasoning', group: '照り焼きだれ', amountType: 'fixed' },
       { name: 'みりん', amount: '大さじ2', type: 'seasoning', group: '照り焼きだれ', amountType: 'fixed' },
       { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: '照り焼きだれ', amountType: 'fixed' },
-      { name: '卵', amount: '2個', type: 'food', amountType: 'fixed' },
+      { name: '卵', amount: '2個', type: 'food', group: '炒り卵', amountType: 'fixed' },
+      { name: 'みりん', amount: '大さじ1', type: 'seasoning', group: '炒り卵', amountType: 'fixed' },
+      { name: '砂糖', amount: '大さじ1/2', type: 'seasoning', group: '炒り卵', amountType: 'fixed' },
+      { name: '酒', amount: '大さじ1/2', type: 'seasoning', group: '炒り卵', amountType: 'fixed' },
+      { name: '塩', amount: 'ひとつまみ', type: 'seasoning', group: '炒り卵', amountType: 'guideline' },
       { name: 'きぬさや', amount: '10枚', type: 'food', amountType: 'fixed' },
       { name: '温かいご飯', amount: 'どんぶり2杯分（約400g）', type: 'food', amountType: 'fixed' },
-      { name: '塩', amount: '少々', type: 'seasoning', amountType: 'guideline' },
-      { name: '砂糖', amount: '適宜', type: 'seasoning', amountType: 'optional' },
-      { name: '酒', amount: '適宜', type: 'seasoning', amountType: 'optional' }
+      { name: '塩（きぬさやのゆで湯用）', amount: '少々', type: 'seasoning', amountType: 'guideline' }
     ],
     steps: [
-      { text: 'きぬさやはへたと筋を取り、塩少々を入れた熱湯でさっとゆで、冷水にとる。さめたら水けをきり、斜めに細切りにする。卵を溶きほぐし、みりん大さじ1、砂糖、酒各大さじ1/2、塩ひとつまみを混ぜる。' },
-      { text: 'フライパンに卵液を入れ、中火にかける。菜箸3〜4本でたえず混ぜながら、2分ほど炒る。ぽろぽろになったら取り出し、フライパンをさっと拭く。', cue: '菜箸3〜4本でたえず混ぜながら2分ほど。ぽろぽろになったら取り出す。' },
-      { text: 'フライパンに照り焼きだれの材料を入れて混ぜ、ひき肉を混ぜる。火にかける前にたれと混ぜると味がよくなじみ、細かくきれいにほぐれる。肉全体にたれがなじんだら、中火にかける。', cue: '火にかける前にたれとひき肉を混ぜる。肉全体にたれがなじんだら中火。' },
-      { text: '手順2と同じ要領で、4分ほどたえず混ぜながら炒る。煮汁がわずかに残るくらいになったら火を止める。器にご飯を等分に盛り、鶏そぼろを1/2量ずつ、炒り卵ときぬさやを1/2量ずつのせる。', cue: '4分ほどたえず混ぜながら炒る。煮汁がわずかに残るくらいになったら火を止める。' }
+      { text: 'きぬさやはへたと筋を除き、塩少々を加えた湯でさっとゆでて冷水にとる。冷めたら水けをきり、斜め細切りにする。卵を溶きほぐし、みりん大さじ1、砂糖・酒各大さじ1/2、塩ひとつまみを混ぜる。' },
+      { text: 'フライパンに卵液を入れて中火にかけ、菜箸3〜4本で絶えず混ぜながら約2分炒る。取り出して、フライパンを軽く拭く。', cue: '細かくぽろぽろになったら取り出す。' },
+      { text: 'フライパンに照り焼きだれの材料を混ぜ、ひき肉を加えてよく混ぜてから中火にかける。火にかける前に混ぜておくと、味がなじみ、細かくほぐれる。', cue: '肉全体にたれがなじんでから火にかける。' },
+      { text: '手順2と同じように、絶えず混ぜながら約4分炒る。器にご飯を盛り、鶏そぼろ、炒り卵、きぬさやを半量ずつのせる。', cue: '煮汁がわずかに残るくらいで火を止める。' }
     ],
-    nutritionNote: '1人分 635kcal、塩分2.5g', verification: untested, sourceStatus: 'draft'
+    nutritionNote: '参考資料の記載：1人分635kcal、塩分2.5g。材料や製品により変動します。', storage: cookedStorage,
+    verification: untested, sourceStatus: 'draft'
   },
   {
-    id: 'nasu-pork-miso-itame', name: 'なすと豚バラのみそ炒め', description: '「鍋しぎ」とも呼ばれるこの料理は、甘めのみそ味が魅力。炒めたなすのとろっと柔らかなおいしさも、満喫できます。', servings: 2, category: '主菜', season: ['夏'], tags: ['定番'],
+    id: 'nasu-pork-miso-itame', name: 'なすと豚バラのみそ炒め', description: 'なすを先に炒めて取り出し、豚バラと甘めのみそだれでまとめる炒め物。', servings: 2, cookingTimeNote: '加熱時間の目安：約5分（下ごしらえは別）', category: '主菜', season: ['夏'], tags: ['定番'],
     ingredients: [
       { name: 'なす', amount: '3個（約240g）', type: 'food', amountType: 'fixed' },
       { name: '豚バラ薄切り肉', amount: '120g', type: 'food', amountType: 'fixed' },
@@ -200,18 +209,19 @@ export const standardRecipes: Recipe[] = [
       { name: 'みそ', amount: '大さじ2', type: 'seasoning', group: 'みそだれ', amountType: 'fixed' },
       { name: '酒', amount: '大さじ2', type: 'seasoning', group: 'みそだれ', amountType: 'fixed' },
       { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: 'みそだれ', amountType: 'fixed' },
-      { name: 'サラダ油', amount: '適宜', type: 'seasoning', amountType: 'optional' }
+      { name: 'サラダ油', amount: '大さじ2', type: 'seasoning', amountType: 'fixed' }
     ],
     steps: [
-      { text: 'なすはへたを切り、ピーラーで皮をしま目にむく（これで火の通りがよくなる）。大きめの一口大の乱切りにし、水に5分ほどさらしてざるに上げ、水けを拭く。ピーマンは縦半分に切ってへたと種を取り、小さめの一口大に切る。豚肉は長さ6〜7cmに切る。みそだれの材料を混ぜる。', cue: 'なすは水に5分ほどさらす。' },
-      { text: 'フライパンにサラダ油大さじ2を強めの中火で熱し、なすを入れて2〜3分炒める。皮につやが出て、身にかるく焼き色がついたら取り出す。', cue: '強めの中火で2〜3分。皮につやが出て、身にかるく焼き色がついたら取り出す。' },
-      { text: '同じフライパンに豚肉を入れ、中火で1〜2分炒める。色が変わって脂が出てきたら、ピーマン、赤唐辛子を加え、全体に油が回るまで30秒ほど炒める。', cue: '中火で1〜2分。肉の色が変わって脂が出てきたらピーマン、赤唐辛子を加え、全体に油が回るまで30秒ほど。' },
-      { text: '手順2のなすを戻し入れ、みそだれを加える。たれが全体にからまるまで、手早く炒め合わせ、火を止める。', cue: 'たれが全体にからまるまで手早く炒め合わせる。' }
+      { text: 'なすはへたを落とし、ピーラーで皮を縞目にむく（火が通りやすくなる）。大きめの乱切りにして水に約5分さらし、水けを拭く。ピーマンは縦半分に切ってへたと種を除き、小さめの一口大に切る。豚肉は6〜7cm長さに切る。みそだれの材料を混ぜておく。' },
+      { text: 'フライパンにサラダ油大さじ2を強めの中火で熱し、なすを2〜3分炒めて取り出す。', cue: '皮につやが出て、身に軽く焼き色がついたら取り出す。' },
+      { text: '同じフライパンで豚肉を中火で1〜2分炒め、ピーマンと赤唐辛子を加えて約30秒炒める。', cue: '肉の色が変わり、脂が出てきたらピーマンを加える。' },
+      { text: 'なすを戻してみそだれを加え、手早く炒め合わせて火を止める。', cue: 'たれが全体にからんだら火を止める。' }
     ],
-    cookingTips: ['ちょっとひと手間ですが、なすだけを先に炒めておくことが大きなポイント。きちんと油が回り、中までとろっと仕上がります。'], nutritionNote: '1人分 445kcal、塩分2.3g', verification: untested, sourceStatus: 'draft'
+    cookingTips: ['なすだけを先に炒めておくと、油がしっかり回り、中までやわらかく仕上がります。'], nutritionNote: '参考資料の記載：1人分445kcal、塩分2.3g。材料や製品により変動します。', storage: cookedStorage,
+    verification: untested, sourceStatus: 'draft'
   },
   {
-    id: 'kabocha-beef-miso-itame', name: 'かぼちゃと牛肉のみそ炒め', description: 'こってりめのみそ味は、かぼちゃとも相性◎。食べごたえのある一品です。', servings: 2, category: '主菜', season: ['秋'], tags: ['定番'],
+    id: 'kabocha-beef-miso-itame', name: 'かぼちゃと牛肉のみそ炒め', description: '蒸し焼きにしたかぼちゃと牛肉を、こっくりしたみそだれで炒め合わせる。', servings: 2, cookingTimeNote: '加熱時間の目安：約6分（下ごしらえは別）', category: '主菜', season: ['秋'], tags: ['定番'],
     ingredients: [
       { name: 'かぼちゃ', amount: '1/6個（正味約200g）', type: 'food', amountType: 'fixed' },
       { name: '牛こま切れ肉', amount: '150g', type: 'food', amountType: 'fixed' },
@@ -220,20 +230,22 @@ export const standardRecipes: Recipe[] = [
       { name: 'みそ', amount: '大さじ2', type: 'seasoning', group: 'みそだれ', amountType: 'fixed' },
       { name: '酒', amount: '大さじ2', type: 'seasoning', group: 'みそだれ', amountType: 'fixed' },
       { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: 'みそだれ', amountType: 'fixed' },
-      { name: '酒', amount: '適宜', type: 'seasoning', amountType: 'optional' },
-      { name: '片栗粉', amount: '適宜', type: 'food', amountType: 'optional' },
-      { name: 'サラダ油', amount: '適宜', type: 'seasoning', amountType: 'optional' }
+      { name: '酒', amount: '小さじ1', type: 'seasoning', group: '牛肉の下味', amountType: 'fixed' },
+      { name: '片栗粉', amount: '小さじ1', type: 'food', group: '牛肉の下味', amountType: 'fixed' },
+      { name: '水', amount: '大さじ1', type: 'liquid', amountType: 'fixed' },
+      { name: 'サラダ油', amount: '大さじ1（大さじ1/2ずつ使用）', type: 'seasoning', amountType: 'fixed' }
     ],
     steps: [
-      { text: 'かぼちゃはわたと種を取り、横半分に切って幅1cmに切る。牛肉は酒、片栗粉各小さじ1をもみ込む。' },
-      { text: 'フライパンにサラダ油大さじ1/2を弱めの中火で熱し、かぼちゃを並べて2分焼く。裏返し、水大さじ1をふってふたをし、2分蒸し焼きにして取り出す。', cue: '弱めの中火で2分焼き、裏返して水大さじ1をふり、ふたをして2分蒸し焼き。' },
-      { text: '同じフライパンにサラダ油大さじ1/2をたし、牛肉を入れ、中火で1〜2分炒める。色が変わって脂が出てきたら、しし唐辛子、赤唐辛子を加え、全体に油が回るまで30秒ほど炒める。', cue: '中火で1〜2分。肉の色が変わって脂が出てきたらしし唐辛子、赤唐辛子を加え、全体に油が回るまで30秒ほど。' },
-      { text: '手順2のかぼちゃを戻し入れ、みそだれを加える。たれが全体にからまるまで、手早く炒め合わせ、火を止める。', cue: 'たれが全体にからまるまで手早く炒め合わせる。' }
+      { text: 'かぼちゃはわたと種を除き、横半分に切ってから1cm幅に切る。牛肉に酒・片栗粉各小さじ1をもみ込む。' },
+      { text: 'フライパンにサラダ油大さじ1/2を弱めの中火で熱し、かぼちゃを並べて2分焼く。裏返して水大さじ1をふり、ふたをして2分蒸し焼きにして取り出す。' },
+      { text: 'サラダ油大さじ1/2を足し、牛肉を中火で1〜2分炒める。しし唐辛子と赤唐辛子を加え、約30秒炒める。', cue: '肉の色が変わり、脂が出てきたらしし唐辛子を加える。' },
+      { text: 'かぼちゃを戻してみそだれを加え、手早く炒め合わせて火を止める。', cue: 'たれが全体にからんだら火を止める。' }
     ],
-    nutritionNote: '1人分 441kcal、塩分2.3g', verification: untested, sourceStatus: 'draft'
+    nutritionNote: '参考資料の記載：1人分441kcal、塩分2.3g。材料や製品により変動します。', storage: cookedStorage,
+    verification: untested, sourceStatus: 'draft'
   },
   {
-    id: 'oyakodon', name: '親子丼', description: 'とろっ、ふわっとした卵の「半熟感」が絶妙！ 甘じょっぱいつゆと、鶏もものうまみで、食べごたえも満点です。', servings: 2, category: '丼・ワンプレート', season: ['通年'], tags: ['定番'],
+    id: 'oyakodon', name: '親子丼', description: '鶏ももと玉ねぎを甘辛いつゆで煮て、半熟の卵でとじる丼。', servings: 2, cookingTimeNote: '加熱時間の目安：約8分（下ごしらえは別）', category: '丼・ワンプレート', season: ['通年'], tags: ['定番'],
     ingredients: [
       { name: '卵', amount: '3個', type: 'food', amountType: 'fixed' },
       { name: '鶏もも肉（小）', amount: '1枚（約200g）', type: 'food', amountType: 'fixed' },
@@ -246,12 +258,13 @@ export const standardRecipes: Recipe[] = [
       { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: '丼つゆ', amountType: 'fixed' }
     ],
     steps: [
-      { text: '玉ねぎは縦に薄切りにする。三つ葉は根元を切り、長さ3cmに切る。鶏肉は余分な脂肪を取り、小さめの一口大に切る。', cue: '三つ葉は長さ3cm、鶏肉は小さめの一口大。' },
-      { text: '直径約20cmのフライパンにつゆの材料を入れて混ぜ、中火にかける。煮立ったら、玉ねぎ、鶏肉を加え、ときどき返しながら6分ほど煮て火を止める。', cue: '中火で煮立ったら玉ねぎ、鶏肉を加え、ときどき返しながら6分ほど。' },
-      { text: '卵をボールに割り入れ、卵黄1個分をそっと取り出してとっておく。菜箸で卵を5〜6回混ぜて粗く溶く。白身の大きなかたまりがなくなったら、すぐに混ぜるのをやめる。器に温かいご飯を盛る。', cue: '卵は5〜6回混ぜて粗く溶く。白身の大きなかたまりがなくなったら混ぜるのをやめる。' },
-      { text: 'フライパンの鶏肉、玉ねぎ、煮汁の各1/2量を取り出す（煮汁の1/2量の目安は約大さじ4）。残りの具と煮汁を中火にかける。煮立ったら溶き卵の1/2量を回しかけ、すぐにふたをして、30秒〜1分煮る。ときどきフライパンを揺らし、卵が鍋肌にくっつくのを防ぐ。', cue: '具と煮汁を各1/2量（煮汁は約大さじ4）。中火で煮立ったら溶き卵1/2量を回しかけ、ふたをして30秒〜1分。ときどきフライパンを揺らす。' },
-      { text: 'フライパンを傾け、具をずらしながらご飯にのせる（むずかしければ、具を下からフライ返しですくえる）。とっておいた卵黄を溶いて1/2量を回しかけ、三つ葉の1/2量を添える。残りも同様に仕上げる。', cue: '卵黄1/2量、三つ葉1/2量を添え、残りも同様に仕上げる。' }
+      { text: '玉ねぎは縦に薄切りにする。三つ葉は根元を落として3cm長さに切る。鶏肉は余分な脂を除き、小さめの一口大に切る。' },
+      { text: '直径20cmほどのフライパンに丼つゆの材料を混ぜて中火にかける。煮立ったら玉ねぎと鶏肉を入れ、ときどき返しながら約6分煮て火を止める。' },
+      { text: '卵をボウルに割り入れ、卵黄1個分をそっと取り分けておく。残りを菜箸で5〜6回混ぜ、粗く溶く。器にご飯を盛る。', cue: '白身の大きなかたまりがなくなったら、すぐ混ぜるのをやめる。' },
+      { text: 'フライパンの具と煮汁を半量（煮汁は大さじ4ほど）取り出す。残りを中火にかけ、煮立ったら溶き卵の半量を回し入れ、すぐにふたをして30秒〜1分煮る。', cue: 'ときどきフライパンを揺すり、卵がくっつかないようにする。' },
+      { text: 'フライパンを傾けて、具をすべらせるようにご飯にのせる（難しければフライ返しを使う）。取り分けた卵黄を溶いて半量を回しかけ、三つ葉の半量をのせる。残りも同じように作る。' }
     ],
-    cookingTips: ['卵はとにかく「混ぜすぎない」こと！残しておいた白身のかたまりが、仕上がりのとろっとした食感につながります。'], nutritionNote: '1人分 747kcal、塩分3.2g', verification: untested, sourceStatus: 'draft'
+    cookingTips: ['卵は混ぜすぎず、白身が少し残るくらいにすると、とろりと仕上がります。'], nutritionNote: '参考資料の記載：1人分747kcal、塩分3.2g。材料や製品により変動します。', storage: { notes: '半熟の卵を使うため、作り置きせず、作りたてを食べる。' },
+    verification: untested, sourceStatus: 'draft'
   }
 ]
