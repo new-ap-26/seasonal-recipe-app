@@ -65,6 +65,35 @@ export const standardRecipes: Recipe[] = [
     verification: untested, sourceStatus: 'draft'
   },
   {
+    id: 'happosai-style', name: '八宝菜風', description: 'えびと白菜、しいたけを中華風うま塩煮汁で煮る、とろみのあるおかず。黄金比率の煮汁で手早く仕上げます。', servings: 2, cookingTime: 15, cookingTimeNote: '煮る時間は約5分（下ごしらえ・炒める時間は別）', category: '主菜', season: ['通年'], tags: ['定番'],
+    ingredients: [
+      { name: 'えび（殻つき）', amount: '8尾（約180g）', type: 'food', group: '主材料', amountType: 'fixed' },
+      { name: '白菜の葉', amount: '3枚（約300g）', type: 'food', group: '主材料', amountType: 'fixed' },
+      { name: '生しいたけ', amount: '3個', type: 'food', group: '主材料', amountType: 'fixed' },
+      { name: '片栗粉', amount: '小さじ1', type: 'food', group: 'えびの下味', amountType: 'fixed' },
+      { name: '酒', amount: '小さじ1', type: 'seasoning', group: 'えびの下味', amountType: 'fixed' },
+      { name: '塩', amount: '少々', type: 'seasoning', group: 'えびの下味', amountType: 'guideline' },
+      { name: 'こしょう', amount: '少々', type: 'seasoning', group: 'えびの下味', amountType: 'guideline' },
+      { name: 'サラダ油', amount: '小さじ1', type: 'seasoning', group: '炒め用', amountType: 'fixed' },
+      { name: '砂糖', amount: '小さじ1', type: 'seasoning', group: '中華風うま塩煮汁', amountType: 'fixed' },
+      { name: '塩', amount: '小さじ1/2', type: 'seasoning', group: '中華風うま塩煮汁', amountType: 'fixed' },
+      { name: '鶏ガラスープの素（顆粒）', amount: '小さじ1/3', type: 'seasoning', group: '中華風うま塩煮汁', amountType: 'fixed' },
+      { name: 'しょうゆ', amount: '小さじ2', type: 'seasoning', group: '中華風うま塩煮汁', amountType: 'fixed' },
+      { name: '湯', amount: '3/4カップ', type: 'liquid', group: '中華風うま塩煮汁', amountType: 'fixed' },
+      { name: '片栗粉', amount: '大さじ1と1/2', type: 'food', group: '水溶き片栗粉', amountType: 'fixed' },
+      { name: '水', amount: '大さじ1', type: 'liquid', group: '水溶き片栗粉', amountType: 'fixed' },
+      { name: 'ごま油', amount: '適量', type: 'seasoning', group: '仕上げ', amountType: 'optional' }
+    ],
+    steps: [
+      { text: '白菜は葉としんに分け、それぞれ一口大に切る。しいたけは軸を切り、半分に切る。えびは殻をむいて尾と背わたを取り、下味の片栗粉、酒、塩、こしょうをもみ込む。中華風うま塩煮汁の材料を混ぜ、水溶き片栗粉も別に混ぜておく。' },
+      { text: 'フライパンにサラダ油小さじ1を中火で熱し、えびを入れて約2分炒め、いったん取り出す。' , cue: 'えびは中火で約2分炒めて取り出す。' },
+      { text: 'フライパンをさっと拭き、白菜のしんとしいたけを炒める。白菜の葉を加え、全体を炒め合わせる。', },
+      { text: '中華風うま塩煮汁を加えてふたをし、中火で約5分煮る。ふたを取ってさっと混ぜ、水溶き片栗粉をもう一度混ぜてから加える。混ぜながらとろみをつけ、仕上げにごま油を加える。', cue: '煮汁を加えてふたをし、中火で約5分。水溶き片栗粉は加える直前に混ぜ直す。' }
+    ],
+    cookingTips: ['煮汁は砂糖1：塩1/2：鶏ガラスープの素1/3：しょうゆ2：湯3/4カップの比率。', 'えびは先に約2分炒めて取り出し、煮込みの最後まで加熱し続けないようにします。', '水溶き片栗粉は加える直前にもう一度混ぜ、煮汁に加えたら混ぜながらとろみをつけます。'],
+    verification: untested, sourceStatus: 'draft'
+  },
+  {
     id: 'chicken-nanban', name: 'チキン南蛮', description: 'まろやかなタルタルと、甘酸っぱいたれが絶妙なバランス。サクッと香ばしいころもにより、からめてどうぞ。', servings: 2, category: '主菜', season: ['通年'], tags: ['定番'],
     ingredients: [
       { name: '鶏胸肉（皮なし・大）', amount: '1枚（約300g）', type: 'food', amountType: 'fixed' },
