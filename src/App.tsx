@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { recipes } from './data/recipes'
+import { pendingYakuzen } from './data/shared'
 import { userRepository } from './repositories/userRepository'
 import { applyRevision } from './utils/recipe'
 import type { CookingLog, DishCategory, Ingredient, Recipe, Season, UserState } from './types'
@@ -39,6 +40,7 @@ export default function App() {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState<(typeof categories)[number]>('すべて')
   const [season, setSeason] = useState<(typeof seasons)[number]>('すべて')
+  const [searchFocusRequest, setSearchFocusRequest] = useState(0)
 
   const saveState = (next: UserState) => { setState(next); userRepository.save(next) }
   const selectedBase = recipes.find(r => r.id === selectedId)
@@ -87,10 +89,10 @@ export default function App() {
   }
 
   return <div className="app-shell">
-    <header className="topbar"><div><span className="eyebrow">旬を楽しむ・自分好みに育てる</span><h1>旬ごはん</h1></div><button className="icon-btn" onClick={() => {setTab('recipes');setSelectedId(null)}}>⌕</button></header>
+    <header className="topbar"><div><span className="eyebrow">旬を楽しむ・自分好みに育てる</span><h1>旬ごはん</h1></div><button className="icon-btn" aria-label="レシピを検索" onClick={() => {setTab('recipes');setSelectedId(null);setSearchFocusRequest(n => n + 1)}}>⌕</button></header>
     <main>
       {tab === 'home' && <Home state={state} openRecipe={openRecipe} setTab={setTab} />}
-      {tab === 'recipes' && (selected ? <RecipeDetail recipe={selected} state={state} onBack={() => setSelectedId(null)} onFavorite={toggleFavorite} onStaple={toggleStaple} onLog={addLog} onRevise={reviseRecipe} onReset={resetRecipe} /> : <RecipeList items={visibleRecipes} state={state} query={query} setQuery={setQuery} category={category} setCategory={setCategory} season={season} setSeason={setSeason} openRecipe={openRecipe} />)}
+      {tab === 'recipes' && (selected ? <RecipeDetail recipe={selected} state={state} onBack={() => setSelectedId(null)} onFavorite={toggleFavorite} onStaple={toggleStaple} onLog={addLog} onRevise={reviseRecipe} onReset={resetRecipe} /> : <RecipeList items={visibleRecipes} state={state} query={query} setQuery={setQuery} category={category} setCategory={setCategory} season={season} setSeason={setSeason} openRecipe={openRecipe} searchFocusRequest={searchFocusRequest} />)}
       {tab === 'season' && <SeasonPage openRecipe={openRecipe} />}
       {tab === 'medicinal' && <MedicinalPage openRecipe={openRecipe} />}
       {tab === 'mine' && <MinePage state={state} openRecipe={openRecipe} exportBackup={exportBackup} importBackup={importBackup} />}
@@ -124,8 +126,10 @@ function Home({state,openRecipe,setTab}:{state:UserState,openRecipe:(id:string)=
   </div>
 }
 
-function RecipeList({items,state,query,setQuery,category,setCategory,season,setSeason,openRecipe}:{items:Recipe[],state:UserState,query:string,setQuery:(s:string)=>void,category:(typeof categories)[number],setCategory:(x:(typeof categories)[number])=>void,season:(typeof seasons)[number],setSeason:(x:(typeof seasons)[number])=>void,openRecipe:(id:string)=>void}) {
-  return <div className="page"><h2>レシピ集</h2><input className="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="料理名・食材を検索"/><div className="filter-row">{categories.map(c=><button key={c} className={category===c?'selected':''} onClick={()=>setCategory(c)}>{c}</button>)}</div><div className="filter-row">{seasons.map(s=><button key={s} className={season===s?'selected':''} onClick={()=>setSeason(s)}>{s}</button>)}</div><div className="recipe-grid">{items.map(r=><button key={r.id} className="recipe-card" onClick={()=>openRecipe(r.id)}><div className="recipe-image">{r.season[0]}</div><div><div className="card-title"><b>{r.name}</b>{state.favorites.includes(r.id)&&<span>♥</span>}</div><p>{r.description}</p><div className="meta">{r.cookingTime!==undefined&&`⌛ ${r.cookingTime}分　`}{r.tags.slice(0,2).join('・')}</div>{r.verification?.cookingTestStatus==='untested'&&<span className="status-badge">試作前</span>}</div></button>)}</div>{items.length===0&&<p className="empty">条件に合うレシピがありません。</p>}</div>
+function RecipeList({items,state,query,setQuery,category,setCategory,season,setSeason,openRecipe,searchFocusRequest}:{items:Recipe[],state:UserState,query:string,setQuery:(s:string)=>void,category:(typeof categories)[number],setCategory:(x:(typeof categories)[number])=>void,season:(typeof seasons)[number],setSeason:(x:(typeof seasons)[number])=>void,openRecipe:(id:string)=>void,searchFocusRequest:number}) {
+  const searchRef = useRef<HTMLInputElement>(null)
+  useEffect(() => { if (searchFocusRequest > 0) searchRef.current?.focus() }, [searchFocusRequest])
+  return <div className="page"><h2>レシピ集</h2><input ref={searchRef} aria-label="料理名・食材を検索" className="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="料理名・食材を検索"/><div className="filter-row">{categories.map(c=><button key={c} className={category===c?'selected':''} onClick={()=>setCategory(c)}>{c}</button>)}</div><div className="filter-row">{seasons.map(s=><button key={s} className={season===s?'selected':''} onClick={()=>setSeason(s)}>{s}</button>)}</div><div className="recipe-grid">{items.map(r=><button key={r.id} className="recipe-card" onClick={()=>openRecipe(r.id)}><div className="recipe-image">{r.season[0]}</div><div><div className="card-title"><b>{r.name}</b>{state.favorites.includes(r.id)&&<span>♥</span>}</div><p>{r.description}</p><div className="meta">{r.cookingTime!==undefined&&`⌛ ${r.cookingTime}分　`}{r.tags.slice(0,2).join('・')}</div>{r.verification?.cookingTestStatus==='untested'&&<span className="status-badge">試作前</span>}</div></button>)}</div>{items.length===0&&<p className="empty">条件に合うレシピがありません。</p>}</div>
 }
 
 function RecipeDetail({recipe,state,onBack,onFavorite,onStaple,onLog,onRevise,onReset}:{recipe:Recipe,state:UserState,onBack:()=>void,onFavorite:(id:string)=>void,onStaple:(id:string)=>void,onLog:(r:Recipe,n:number,t:string[],m:string)=>void,onRevise:(r:Recipe,c:Record<string,unknown>)=>void,onReset:(id:string)=>void}) {
@@ -174,8 +178,9 @@ function SeasonPage({openRecipe}:{openRecipe:(id:string)=>void}) {
 function SeasonCard({title,foods}:{title:string,foods:string}) { return <div className="season-card"><b>{title}</b><p>{foods}</p></div> }
 
 function MedicinalPage({openRecipe}:{openRecipe:(id:string)=>void}) {
-  const items = recipes.filter(r => r.medicinalFoodNote)
-  return <div className="page"><h2>薬膳</h2><p className="lead">伝統的な食養生の考え方として、季節や食材選びの参考にします。現代医学上の効能とは分けて表示します。</p><section className="info-box"><h3>表示ルール</h3><p>専門資料で確認できた内容だけを掲載し、不十分なものは「確認後に追記予定」とします。</p><small>※薬膳は伝統的な食養生の考え方です。現代医学上の治療効果を示すものではありません。</small></section><h3>関連レシピ</h3>{items.slice(0,4).map(r=><button className="mini-card" key={r.id} onClick={()=>openRecipe(r.id)}><b>{r.name}</b><span>レシピを見る →</span></button>)}</div>
+  // 専門資料で確認できた薬膳情報（確認状態が pending 以外）を持つレシピだけを表示する
+  const items = recipes.filter(r => r.medicinalFoodNote && r.medicinalFoodNote !== pendingYakuzen && r.verification?.yakuzen !== undefined && r.verification.yakuzen !== 'pending')
+  return <div className="page"><h2>薬膳</h2><p className="lead">伝統的な食養生の考え方として、季節や食材選びの参考にします。現代医学上の効能とは分けて表示します。</p><section className="info-box"><h3>表示ルール</h3><p>専門資料で確認できた内容だけを掲載し、不十分なものは「確認後に追記予定」とします。</p><small>※薬膳は伝統的な食養生の考え方です。現代医学上の治療効果を示すものではありません。</small></section><h3>関連レシピ</h3>{items.length===0&&<p className="muted">確認済みの薬膳情報があるレシピは、まだありません。専門資料で確認でき次第、ここに表示します。</p>}{items.slice(0,4).map(r=><button className="mini-card" key={r.id} onClick={()=>openRecipe(r.id)}><b>{r.name}</b><span>レシピを見る →</span></button>)}</div>
 }
 
 function MinePage({state,openRecipe,exportBackup,importBackup}:{state:UserState,openRecipe:(id:string)=>void,exportBackup:()=>void,importBackup:(f:File)=>void}) {
