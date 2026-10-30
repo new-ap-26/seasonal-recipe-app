@@ -43,24 +43,26 @@ export const standardRecipes: Recipe[] = [
     cookingTips: ['少なめのつゆをなじませたいときは、落としぶたが必須。つゆが落としぶたに当たって落ち、全体にいきわたります。'], nutritionNote: '1/3量あたり 339kcal、塩分2.7g', verification: untested, sourceStatus: 'draft'
   },
   {
-    id: 'saba-misoni', name: 'さばのみそ煮', description: '濃厚な甘めのみそつゆが、なんともご飯のすすむ味！みそは2回に分けて時間差で加えると、本来の香りのよさも楽しめます。', servings: 2, category: '主菜', season: ['通年'], tags: ['定番'],
+    id: 'saba-misoni', name: 'さばのみそ煮', description: 'さばを皮目から香ばしく焼き、濃厚な甘めのみそだれで短時間煮る一品。みそを2回に分けて加え、香りとうまみを生かします。', servings: 2, cookingTime: 15, cookingTimeNote: '煮る時間は約6分（さばを焼く時間・下ごしらえは別）', category: '主菜', season: ['通年'], tags: ['定番'],
     ingredients: [
-      { name: 'さばの切り身（骨つき）', amount: '2切れ（約250g）', type: 'food', amountType: 'fixed' },
-      { name: 'しょうがの薄切り', amount: '1かけ分', type: 'food', amountType: 'fixed' },
-      { name: 'ねぎ', amount: '1本', type: 'food', amountType: 'fixed' },
-      { name: '水', amount: '1カップ', type: 'liquid', group: 'みそつゆ', amountType: 'fixed' },
-      { name: 'みそ', amount: '大さじ2', type: 'seasoning', group: 'みそつゆ', amountType: 'fixed' },
-      { name: 'みりん', amount: '大さじ1', type: 'seasoning', group: 'みそつゆ', amountType: 'fixed' },
-      { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: 'みそつゆ', amountType: 'fixed' }
+      { name: 'さばの切り身', amount: '2切れ（骨つき約250g／骨なし約200g）', type: 'food', group: '主材料', amountType: 'fixed' },
+      { name: 'ねぎ', amount: '1/3本', type: 'food', group: '付け合わせ', amountType: 'fixed' },
+      { name: 'ピーマン', amount: '2個', type: 'food', group: '付け合わせ', amountType: 'fixed' },
+      { name: 'サラダ油', amount: '小さじ1', type: 'seasoning', group: '焼き用', amountType: 'fixed' },
+      { name: 'みそ', amount: '大さじ2（うち大さじ1は仕上げ用）', type: 'seasoning', group: '濃厚みそ煮汁', amountType: 'fixed' },
+      { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: '濃厚みそ煮汁', amountType: 'fixed' },
+      { name: 'みりん', amount: '大さじ1', type: 'seasoning', group: '濃厚みそ煮汁', amountType: 'fixed' },
+      { name: '水', amount: '3/4カップ', type: 'liquid', group: '濃厚みそ煮汁', amountType: 'fixed' }
     ],
     steps: [
-      { text: '落としぶたを用意する（オーブン用シートは直径24cmに切る）。ねぎは長さ5cmに切る。' },
-      { text: 'さばは皮目に斜めに5〜6本、切り目を入れる。ざるに並べ入れ、熱湯を全体に回しかける。身の部分が白っぽくなればOK。水をはったボールに移し、血や汚れをこすり取る（霜ふり）。熱湯をかけて表面のたんぱく質を固め、洗い流すことで、生臭さをカットすることができる。', cue: '身の部分が白っぽくなればOK。' },
-      { text: '直径約24cmのフライパンにみそつゆ用のみそのうち大さじ1と、水、みりん、砂糖を入れ、みそを溶き混ぜる。中火にかけ、煮立ったらさばを皮を上にして並べ入れる。つゆがまだ煮立っていないところにさばを入れると、生臭くなるので注意。ねぎ、しょうがも加える。', cue: '煮立ってから、さばを皮を上にして入れる。' },
-      { text: 'つゆをスプーンですくってさばにかけ、表面全体がぬれたら、落としぶたをのせる。煮汁が1/2量くらいになるまで、5〜6分煮る。', cue: '煮汁が1/2量くらいになるまで5〜6分。' },
-      { text: '落としぶたを取り、残りのみそをすきまに加える。スプーンでつゆに溶き混ぜる。さらに、スプーンでつゆをすくい、さばにかけながら1〜2分煮る。つゆ全体にかるくとろみがついたら完成。', cue: 'つゆをかけながら1〜2分。つゆ全体にかるくとろみがついたら完成。' }
+      { text: 'ねぎは長さ5cmに切る。ピーマンはへたと種を取り、縦4等分に切る。さばはペーパータオルで水けを拭き、皮目に5〜6本切り込みを入れる。' },
+      { text: '直径24cm程度のフライパンにサラダ油を中火で熱する。さばを皮目を下にして並べ、焼き色がつくまで約2分焼く。裏返して約1分焼き、いったん取り出す。', cue: '皮目を下にして約2分、裏返して約1分焼く。' },
+      { text: 'フライパンをさっと拭く。みそのうち大さじ1を取り分けておく。残りのみそ、砂糖、みりん、水をフライパンに入れて混ぜ、中火にかけて煮立たせる。さばを皮目を上にして戻し入れ、すきまにねぎとピーマンを加える。落としぶたをして中火で4〜5分煮る。', cue: '煮立った煮汁にさばを皮目を上にして入れ、落としぶたをして4〜5分。' },
+      { text: '落としぶたを外し、取り分けたみそを煮汁に溶き入れる。強めの中火にし、煮汁をさばにかけながら、からめるように約30秒〜1分煮つめる。', cue: '仕上げのみそを加え、煮汁をかけながら約30秒〜1分。' }
     ],
-    cookingTips: ['魚は身がくずれやすいので、上下を返すのではなく、つゆをかけながら煮るのが正解。つゆの余分な水分がとび、とろみが出るのもメリット。'], nutritionNote: '1人分 355kcal、塩分1.8g', verification: untested, sourceStatus: 'draft'
+    cookingTips: ['みそは大さじ1を後から加える二段階方式。最後に加えるみその香りを残します。', 'さばは先に皮目を焼き、煮るときは皮目を上にして煮ます。', '煮る間は身を返さず、煮汁をかけて味をからめます。'],
+    nutritionNote: '画像資料の記載：1人分338kcal、食塩相当量2.5g。材料や製品により変動します。',
+    verification: untested, sourceStatus: 'draft'
   },
   {
     id: 'chicken-nanban', name: 'チキン南蛮', description: 'まろやかなタルタルと、甘酸っぱいたれが絶妙なバランス。サクッと香ばしいころもにより、からめてどうぞ。', servings: 2, category: '主菜', season: ['通年'], tags: ['定番'],
