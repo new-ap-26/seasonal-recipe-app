@@ -11,44 +11,77 @@ export const autumnRecipes: Recipe[] = [
   {
     id: 'salmon-mushroom-butter-soy', name: '鮭ときのこのバターしょうゆ焼き', description: '鮭ときのこを香ばしいバターしょうゆで仕上げる秋の主菜。', servings: 2, cookingTime: 20, category: '主菜', season: ['秋'], tags: ['旬食材', '時短'],
     ingredients: [{ name: '生鮭', amount: '2切れ', type: 'food', group: '主材料', amountType: 'fixed' }, { name: 'しめじ', amount: '100g', type: 'food', group: 'きのこ', amountType: 'fixed' }, { name: 'まいたけ', amount: '80g', type: 'food', group: 'きのこ', amountType: 'fixed' }, { name: '塩', amount: '少々', type: 'seasoning', group: '下味', amountType: 'guideline' }, { name: 'こしょう', amount: '少々', type: 'seasoning', group: '下味', amountType: 'guideline' }, { name: '小麦粉', amount: '薄くまぶす程度', type: 'seasoning', group: '下ごしらえ', amountType: 'guideline' }, { name: 'バター', amount: '15g', type: 'seasoning', group: '仕上げ', amountType: 'fixed' }, { name: 'しょうゆ', amount: '大さじ1', type: 'seasoning', group: '仕上げ', amountType: 'fixed' }],
-    steps: [{ text: '鮭に塩、こしょうをふり、水気をふいて小麦粉を薄くまぶす。きのこはほぐす。' }, { text: 'フライパンに半量のバターを溶かし、鮭を両面焼く。' }, { text: 'きのこを加えて炒める。', cue: '鮭の中心まで十分に火を通す。' }, { text: '残りのバターとしょうゆを加え、全体に絡める。' }],
-    cookingTips: ['鮭の水気をふく。', 'しょうゆは仕上げに加えて焦がしすぎない。'], seasonInfo: '鮭ときのこを秋に楽しむ主菜として登録しています。', nutritionNote: pendingNutrition, medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: provisional, sourceStatus: 'reviewed'
+    steps: [
+      { text: '鮭に塩、こしょうをふって10分ほどおき、出てきた水けを拭いて、小麦粉を薄くまぶす。しめじは石づきを落としてほぐし、まいたけは食べやすくほぐす。' },
+      { text: 'フライパンにバターの半量を中火で溶かし、鮭を皮目から入れて3分焼く。裏返してさらに2〜3分焼く。', cue: '焼き色がついてから裏返す。' },
+      { text: 'きのこを加え、ふたをして弱めの中火で3分ほど蒸し焼きにする。', cue: '鮭の中心まで十分に火を通す。' },
+      { text: '残りのバターとしょうゆを加え、30秒ほどからめて火を止める。', cue: 'しょうゆは焦げやすいので、仕上げに加える。' }
+    ],
+        cookingTips: ['鮭の水気をふく。', 'しょうゆは仕上げに加えて焦がしすぎない。'], seasonInfo: '鮭ときのこを秋に楽しむ主菜として登録しています。', nutritionNote: '鮭はたんぱく質やビタミンD、きのこは食物繊維などを含みます。', medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: provisional, sourceStatus: 'reviewed'
   },
   {
     id: 'sanma-shioyaki', name: 'サンマの塩焼き', description: 'サンマをシンプルな塩焼きで味わう秋の定番。', servings: 2, cookingTime: 20, category: '主菜', season: ['秋'], tags: ['旬食材'],
     ingredients: [{ name: 'サンマ', amount: '2尾', type: 'food', group: '主材料', amountType: 'fixed' }, { name: '塩', amount: '小さじ1/2程度', type: 'seasoning', group: '下味', amountType: 'guideline' }, { name: '大根おろし', amount: '適量', type: 'garnish', group: '添え物', amountType: 'optional' }, { name: 'すだち', amount: '1個', type: 'garnish', group: '添え物', amountType: 'optional' }],
-    steps: [{ text: 'サンマは表面の水気をふき、両面に塩をふる。' }, { text: '10分ほど置き、出てきた水分を軽くふく。' }, { text: '魚焼きグリル等で両面を焼く。', cue: '身の中心まで十分に火が通り、皮が香ばしくなるまで。' }, { text: '好みで大根おろしとすだちを添える。' }],
-    cookingTips: ['焼く前に水分をふく。', '生焼けを避け、中心まで火を通す。'], seasonInfo: '秋のサンマを味わう定番料理です。', nutritionNote: pendingNutrition, medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: provisional, sourceStatus: 'reviewed'
+    steps: [
+      { text: 'サンマは表面の水けを拭き、両面に塩をふる（グリルに入らない場合は、長さを半分に切る）。' },
+      { text: '10分ほどおき、出てきた水けを拭く。' },
+      { text: '魚焼きグリルを予熱し、中火で片面5〜6分、裏返して4〜5分焼く（両面焼きグリルの場合は8〜10分）。', cue: '身の中心まで十分に火が通り、皮に焼き色がつくまで焼く。' },
+      { text: '器に盛り、好みで大根おろしとすだちを添える。' }
+    ],
+        cookingTips: ['焼く前に水分をふく。', '生焼けを避け、中心まで火を通す。'], seasonInfo: '秋のサンマを味わう定番料理です。', nutritionNote: 'サンマはたんぱく質やビタミンD、DHA・EPAなどを含みます。', medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: provisional, sourceStatus: 'reviewed'
   },
   {
     id: 'spinach-sesame', name: 'ほうれん草のごま和え', description: '香ばしいごまで和える定番の青菜副菜。', servings: 2, cookingTime: 10, category: '副菜', season: ['秋', '冬'], tags: ['時短'],
     ingredients: [{ name: 'ほうれん草', amount: '1束', type: 'food', group: '主材料', amountType: 'fixed' }, { name: 'すりごま', amount: '大さじ2', type: 'seasoning', group: '和え衣', amountType: 'fixed' }, { name: 'しょうゆ', amount: '小さじ2', type: 'seasoning', group: '和え衣', amountType: 'fixed' }, { name: '砂糖', amount: '小さじ1', type: 'seasoning', group: '和え衣', amountType: 'fixed' }],
-    steps: [{ text: 'ほうれん草はよく洗い、沸騰した湯で茎側からゆでる。' }, { text: '冷水に取り、水気をしっかり絞って4cm程度に切る。' }, { text: '和え衣を混ぜ、ほうれん草と和える。' }],
-    cookingTips: ['ゆですぎない。', '水気をよく絞る。'], seasonInfo: '寒い時期のほうれん草を楽しむ定番副菜です。', nutritionNote: pendingNutrition, medicinalFoodNote: pendingYakuzen, storage: { refrigeration: '保存する場合は清潔な容器で冷蔵する。', notes: '具体的な保存日数は未設定です。' }, verification: provisional, sourceStatus: 'reviewed'
+    steps: [
+      { text: 'ほうれん草は根元に切り込みを入れ、根元の土をよく洗い落とす。和え衣の材料を混ぜておく。' },
+      { text: '鍋に湯を沸かし、ほうれん草を根元から入れて30秒ゆで、葉まで沈めてさらに30秒〜1分ゆでる。冷水にとって冷まし、水けをしっかり絞って4cm長さに切る。', cue: '茎がしんなりしたら、すぐに冷水にとる。' },
+      { text: '食べる直前に、和え衣と和える。' }
+    ],
+        cookingTips: ['ゆですぎない。', '水気をよく絞る。'], seasonInfo: '寒い時期のほうれん草を楽しむ定番副菜です。', nutritionNote: 'ほうれん草はβ-カロテン、葉酸、鉄などを含みます。', medicinalFoodNote: pendingYakuzen, storage: { refrigeration: '保存する場合は清潔な容器で冷蔵する。', notes: '具体的な保存日数は未設定です。' }, verification: provisional, sourceStatus: 'reviewed'
   },
   {
     id: 'kinpira-renkon', name: 'れんこんのきんぴら', description: 'れんこんのしゃきしゃき感を生かした秋の副菜。', servings: 2, cookingTime: 15, category: '副菜', season: ['秋'], tags: ['旬食材'],
     ingredients: [{ name: 'れんこん', amount: '180g', type: 'food', group: '主材料', amountType: 'fixed' }, { name: 'ごま油', amount: '小さじ1', type: 'seasoning', group: '炒め用', amountType: 'fixed' }, { name: 'しょうゆ', amount: '大さじ1', type: 'seasoning', group: '合わせ調味料', amountType: 'fixed' }, { name: 'みりん', amount: '大さじ1', type: 'seasoning', group: '合わせ調味料', amountType: 'fixed' }, { name: '砂糖', amount: '小さじ1', type: 'seasoning', group: '合わせ調味料', amountType: 'fixed' }, { name: '白ごま', amount: '適量', type: 'garnish', group: '仕上げ', amountType: 'optional' }],
-    steps: [{ text: 'れんこんは薄めの半月切りにし、さっと水にさらして水気を切る。' }, { text: 'フライパンにごま油を熱し、れんこんを炒める。' }, { text: 'しょうゆ、みりん、砂糖を加えて汁気がほぼなくなるまで炒める。' }, { text: '白ごまをふる。' }],
-    cookingTips: ['水にさらしすぎない。', '炒めすぎず食感を残す。'], seasonInfo: '秋のれんこんを楽しむ定番副菜です。', nutritionNote: pendingNutrition, medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: provisional, sourceStatus: 'reviewed'
+    steps: [
+      { text: 'れんこんは皮をむき、3mm厚さの半月切りにする。水に3分ほどさらし、水けをよくきる。しょうゆ、みりん、砂糖を混ぜておく。' },
+      { text: 'フライパンにごま油を中火で熱し、れんこんを3分ほど炒める。', cue: 'れんこんが透き通ってきたら次へ。' },
+      { text: '合わせた調味料を加え、2分ほど炒めて汁けをとばす。', cue: '汁けがほぼなくなったら火を止める。' },
+      { text: '器に盛り、白ごまをふる。' }
+    ],
+        cookingTips: ['水にさらしすぎない。', '炒めすぎず食感を残す。'], seasonInfo: '秋のれんこんを楽しむ定番副菜です。', nutritionNote: 'れんこんはビタミンCや食物繊維などを含みます。', medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: provisional, sourceStatus: 'reviewed'
   },
   {
     id: 'sweet-potato-simmer', name: 'さつまいもの甘煮', description: 'さつまいもの甘みを生かしてやさしく煮る秋の副菜。', servings: 2, cookingTime: 20, category: '副菜', season: ['秋'], tags: ['旬食材', '節約'],
     ingredients: [{ name: 'さつまいも', amount: '250g', type: 'food', group: '主材料', amountType: 'fixed' }, { name: '水', amount: '200ml', type: 'liquid', group: '煮汁', amountType: 'fixed' }, { name: '砂糖', amount: '大さじ1', type: 'seasoning', group: '煮汁', amountType: 'fixed' }, { name: 'みりん', amount: '大さじ1', type: 'seasoning', group: '煮汁', amountType: 'fixed' }, { name: 'しょうゆ', amount: '小さじ1', type: 'seasoning', group: '煮汁', amountType: 'fixed' }],
-    steps: [{ text: 'さつまいもは1.5cm幅に切り、短時間水にさらす。' }, { text: '鍋にさつまいもと水を入れて煮立てる。' }, { text: '砂糖、みりん、しょうゆを加え、落としぶたをして弱火で煮る。' }, { text: '竹串がすっと通ったら火を止め、少し置いて味をなじませる。' }],
-    cookingTips: ['煮崩れしやすいので触りすぎない。', '火加減は弱めにする。'], seasonInfo: '秋のさつまいもを楽しむ副菜です。', nutritionNote: pendingNutrition, medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: provisional, sourceStatus: 'reviewed'
+    steps: [
+      { text: 'さつまいもはよく洗い、皮つきのまま1.5cm幅の輪切りにする。水に5分ほどさらし、水けをきる。' },
+      { text: '鍋にさつまいもと水を入れて中火にかけ、煮立ったら砂糖、みりん、しょうゆを加える。' },
+      { text: '落としぶたをして弱火で10〜12分煮る。', cue: '竹串がすっと通れば煮上がり。' },
+      { text: '火を止め、そのまま5分ほどおいて味をなじませる。' }
+    ],
+        cookingTips: ['煮崩れしやすいので触りすぎない。', '火加減は弱めにする。'], seasonInfo: '秋のさつまいもを楽しむ副菜です。', nutritionNote: 'さつまいもはビタミンCや食物繊維、カリウムなどを含みます。', medicinalFoodNote: pendingYakuzen, storage: cookedStorage, verification: provisional, sourceStatus: 'reviewed'
   },
   {
     id: 'mushroom-miso-soup', name: 'きのこのみそ汁', description: '複数のきのこの香りとうまみを楽しむ秋のみそ汁。', servings: 2, cookingTime: 15, category: '汁物', season: ['秋'], tags: ['旬食材'],
     ingredients: [{ name: 'しめじ', amount: '60g', type: 'food', group: 'きのこ', amountType: 'fixed' }, { name: 'まいたけ', amount: '60g', type: 'food', group: 'きのこ', amountType: 'fixed' }, { name: '生しいたけ', amount: '2枚', type: 'food', group: 'きのこ', amountType: 'fixed' }, { name: 'だし汁', amount: '400ml', type: 'liquid', group: '汁', amountType: 'fixed' }, { name: 'みそ', amount: '大さじ1と1/2を目安', type: 'seasoning', group: '調味料', amountType: 'guideline' }],
-    steps: [{ text: 'きのこは石づきを除き、食べやすくほぐす・切る。' }, { text: 'だし汁できのこに火が通るまで煮る。' }, { text: '火を弱めてみそを溶き入れ、煮立てずに火を止める。' }],
-    cookingTips: ['きのこは洗いすぎず、汚れは軽くふく。', 'みそは味を見て調整する。'], seasonInfo: '秋のきのこを組み合わせたみそ汁です。', nutritionNote: pendingNutrition, medicinalFoodNote: pendingYakuzen, storage: soupStorage, verification: provisional, sourceStatus: 'reviewed'
+    steps: [
+      { text: 'しめじは石づきを落としてほぐし、まいたけは食べやすくほぐす。しいたけは石づきを落として薄切りにする。' },
+      { text: '鍋にだし汁ときのこを入れて中火にかけ、煮立ったら弱めの中火で3分煮る。', cue: 'きのこがしんなりしたら次へ。' },
+      { text: '火を弱めてみそを溶き入れ、煮立つ直前で火を止める。', cue: 'みそを入れた後は煮立てない。' }
+    ],
+        cookingTips: ['きのこは洗いすぎず、汚れは軽くふく。', 'みそは味を見て調整する。'], seasonInfo: '秋のきのこを組み合わせたみそ汁です。', nutritionNote: 'きのこは食物繊維やビタミンDなどを含みます。', medicinalFoodNote: pendingYakuzen, storage: soupStorage, verification: provisional, sourceStatus: 'reviewed'
   },
   {
     id: 'sweetpotato-onion-miso', name: 'さつまいもと玉ねぎのみそ汁', description: 'さつまいもの甘みと玉ねぎのうまみを楽しむ秋のみそ汁。', servings: 2, cookingTime: 15, category: '汁物', season: ['秋'], tags: ['旬食材', '節約'],
     ingredients: [{ name: 'さつまいも', amount: '120g', type: 'food', group: '具材', amountType: 'fixed' }, { name: '玉ねぎ', amount: '1/4個', type: 'food', group: '具材', amountType: 'fixed' }, { name: 'だし汁', amount: '400ml', type: 'liquid', group: '汁', amountType: 'fixed' }, { name: 'みそ', amount: '大さじ1と1/2を目安', type: 'seasoning', group: '調味料', amountType: 'guideline' }],
-    steps: [{ text: 'さつまいもは7〜8mm幅に切って短時間水にさらす。玉ねぎは薄切りにする。' }, { text: 'だし汁でさつまいもと玉ねぎを煮る。' }, { text: 'さつまいもに竹串がすっと通ったら火を弱め、みそを溶き入れる。' }, { text: '煮立てずに火を止める。' }],
-    cookingTips: ['さつまいもを煮崩さない。', 'みそを入れた後は強く煮立てない。'], seasonInfo: '秋のさつまいもを楽しむみそ汁です。', nutritionNote: pendingNutrition, medicinalFoodNote: pendingYakuzen, storage: soupStorage, verification: provisional, sourceStatus: 'reviewed'
+    steps: [
+      { text: 'さつまいもはよく洗い、皮つきのまま7〜8mm厚さのいちょう切りにして、水に3分ほどさらす。玉ねぎは5mm幅の薄切りにする。' },
+      { text: '鍋にだし汁、さつまいも、玉ねぎを入れて中火にかけ、煮立ったら弱めの中火で6〜8分煮る。', cue: 'さつまいもに竹串がすっと通ったら次へ。' },
+      { text: '火を弱めてみそを溶き入れる。' },
+      { text: '煮立つ直前で火を止める。', cue: 'みそを入れた後は煮立てない。' }
+    ],
+        cookingTips: ['さつまいもを煮崩さない。', 'みそを入れた後は強く煮立てない。'], seasonInfo: '秋のさつまいもを楽しむみそ汁です。', nutritionNote: 'さつまいもはビタミンCや食物繊維などを含みます。', medicinalFoodNote: pendingYakuzen, storage: soupStorage, verification: provisional, sourceStatus: 'reviewed'
   },
   {
     id: 'mushroom-takikomi', name: 'きのこの炊き込みご飯', description: '複数のきのこの香りを楽しむ、作りやすい2合仕込みの炊き込みご飯。', servings: 4, servingLabel: '作りやすい分量：米2合（約3〜4人分）', cookingTime: 15, cookingTimeNote: '炊飯時間は含みません', category: 'ご飯', season: ['秋'], tags: ['旬食材'],
@@ -59,7 +92,13 @@ export const autumnRecipes: Recipe[] = [
   {
     id: 'mushroom-udon', name: 'きのこうどん', description: 'きのこのうまみをだしに生かした秋の温かいうどん。', servings: 2, cookingTime: 20, category: '麺', season: ['秋'], tags: ['旬食材'],
     ingredients: [{ name: 'ゆでうどん', amount: '2玉', type: 'food', group: '主材料', amountType: 'fixed' }, { name: 'しめじ', amount: '80g', type: 'food', group: '具材', amountType: 'fixed' }, { name: 'まいたけ', amount: '80g', type: 'food', group: '具材', amountType: 'fixed' }, { name: '生しいたけ', amount: '2枚', type: 'food', group: '具材', amountType: 'fixed' }, { name: 'だし汁', amount: '700ml', type: 'liquid', group: 'つゆ', amountType: 'fixed' }, { name: 'しょうゆ', amount: '大さじ2', type: 'seasoning', group: 'つゆ', amountType: 'fixed' }, { name: 'みりん', amount: '大さじ2', type: 'seasoning', group: 'つゆ', amountType: 'fixed' }, { name: '塩', amount: '小さじ1/3を目安', type: 'seasoning', group: 'つゆ', amountType: 'guideline' }, { name: '青ねぎ', amount: '適量', type: 'garnish', group: '仕上げ', amountType: 'optional' }],
-    steps: [{ text: 'きのこは食べやすくほぐす・切る。' }, { text: '鍋にだし汁、しょうゆ、みりんを入れて煮立て、きのこを煮る。' }, { text: '味を見て塩で調整する。' }, { text: 'うどんを加えて表示どおりに温める。' }, { text: '器に盛り、青ねぎを散らす。' }],
-    cookingTips: ['きのこを煮すぎない。', 'つゆは塩を最後に調整する。'], seasonInfo: '秋のきのこを温かいうどんで楽しむ料理です。', nutritionNote: pendingNutrition, medicinalFoodNote: pendingYakuzen, storage: { notes: 'うどんは作りたてを基本とし、食べる分だけ調理します。' }, verification: provisional, sourceStatus: 'reviewed'
+    steps: [
+      { text: 'しめじは石づきを落としてほぐし、まいたけは食べやすくほぐす。しいたけは石づきを落として薄切りにする。青ねぎは小口切りにする。' },
+      { text: '鍋にだし汁、しょうゆ、みりんを入れて中火で煮立て、きのこを加えて3分ほど煮る。' },
+      { text: '味を見て、塩で調える。' },
+      { text: 'うどんを加え、袋の表示時間どおりに温める。', cue: 'うどんの中まで温まったら火を止める。' },
+      { text: '器に盛り、青ねぎを散らす。' }
+    ],
+        cookingTips: ['きのこを煮すぎない。', 'つゆは塩を最後に調整する。'], seasonInfo: '秋のきのこを温かいうどんで楽しむ料理です。', nutritionNote: 'きのこは食物繊維やビタミンDなどを含みます。', medicinalFoodNote: pendingYakuzen, storage: { notes: 'うどんは作りたてを基本とし、食べる分だけ調理します。' }, verification: provisional, sourceStatus: 'reviewed'
   }
 ]
